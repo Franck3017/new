@@ -4,5 +4,7 @@
   "/tv/[id]/page": "app/tv/[id]/page.js",
   "/movie/[slug]/page": "app/movie/[slug]/page.js",
   "/search/page": "app/search/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/people/page": "app/people/page.js",
+  "/person/[id]/page": "app/person/[id]/page.js"
 }
