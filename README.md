@@ -246,18 +246,7 @@ Hook personalizado para manejar llamadas a la API.
 - Componentes cargados dinámicamente
 - Tree shaking automático
 
-## 🧪 Testing
 
-```bash
-# Ejecutar tests
-npm run test
-
-# Tests en modo watch
-npm run test:watch
-
-# Coverage
-npm run test:coverage
-```
 
 ## 📱 Responsive Design
 
