@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import {
   getMovieDetails,
   getMovieCredits,
@@ -22,21 +22,28 @@ import {
   FiArrowLeft,
   FiExternalLink,
   FiDownload,
-  FiBookmark
+  FiBookmark,
+  FiGlobe,
+  FiVideo,
 } from "react-icons/fi";
+import { FaBuilding } from "react-icons/fa";
 import CastMemberCard from "@/components/CastMemberCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import MovieCard from "@/components/MovieCard";
 import { useNotifications, NotificationContainer } from "@/components/Notification";
 import { useFavorites } from "@/context/FavoritesContext";
 import Link from "next/link";
+import { generatePersonUrl, generateMovieUrl, ROUTES, generateGenreUrl } from '@/utils/urlHelpers'; 
 
 interface MoviePageProps {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default function MoviePage({ params }: MoviePageProps) {
+  // Desenvolver params usando React.use()
+  const resolvedParams = use(params) as { slug: string };
+  
   const [movie, setMovie] = useState<Movie | null>(null);
   const [credits, setCredits] = useState<any>(null);
   const [videos, setVideos] = useState<any>(null);
@@ -57,7 +64,7 @@ export default function MoviePage({ params }: MoviePageProps) {
   const { isMovieFavorite, addMovieToFavorites, removeMovieFromFavorites } = useFavorites();
 
   // Extraer el ID de la película del slug
-  const slugParts = params.slug.split('-');
+  const slugParts = resolvedParams.slug.split('-');
   const movieId = slugParts[0];
 
   // Validar que el ID sea un número válido
@@ -77,17 +84,11 @@ export default function MoviePage({ params }: MoviePageProps) {
 
   const mainCast = credits?.cast?.slice(0, 10) || [];
 
-  const getPersonUrl = (person: { id: number; name: string }) => {
-    const nameSlug = person.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return `/person/${person.id}-${encodeURIComponent(nameSlug)}`;
-  };
-
   useEffect(() => {
     const redirectToMovieWithTitle = async () => {
       try {
         const movie: Movie = await getMovieDetails(movieId);
-        const titleSlug = movie.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || '';
-        const newUrl = `/movie/${movie.id}-${encodeURIComponent(titleSlug)}`;
+        const newUrl = generateMovieUrl(movie.id, movie.title || '');
         window.location.href = newUrl;
       } catch (err) {
         console.error('Error fetching movie details for redirect:', err);
@@ -226,7 +227,7 @@ export default function MoviePage({ params }: MoviePageProps) {
           <h2 className="text-xl font-bold text-white mb-2">Error al cargar la película</h2>
           <p className="text-gray-400">{error || 'No se pudo cargar la información de la película'}</p>
           <Link
-            href="/"
+            href={ROUTES.HOME}
             className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200"
           >
             <FiArrowLeft className="h-4 w-4" />
@@ -265,7 +266,7 @@ export default function MoviePage({ params }: MoviePageProps) {
           {/* Botón de regreso */}
           <div className="absolute top-6 left-6 z-10">
             <Link
-              href="/"
+              href={ROUTES.HOME}
               className="flex items-center gap-2 px-4 py-2 bg-black/50 backdrop-blur-sm text-white rounded-lg hover:bg-black/70 transition-all duration-200"
             >
               <FiArrowLeft className="h-4 w-4" />
@@ -328,11 +329,22 @@ export default function MoviePage({ params }: MoviePageProps) {
                     )}
                     {director && (
                       <Link
-                        href={getPersonUrl(director)}
+                        href={generatePersonUrl(director.id, director.name)}
                         className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group"
                       >
                         <FiAward className="text-gray-400 h-5 w-5 group-hover:text-blue-400 transition-colors duration-200" />
                         <span className="text-white group-hover:text-blue-400 transition-colors duration-200 text-sm sm:text-base">Dir. {director.name}</span>
+                      </Link>
+                    )}
+                    {movie.homepage && (
+                      <Link
+                        href={movie.homepage}
+                        className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FiGlobe className="text-gray-400 h-5 w-5 group-hover:text-blue-400 transition-colors duration-200" />
+                        <span className="text-white group-hover:text-blue-400 transition-colors duration-200 text-sm sm:text-base">Página oficial</span>
                       </Link>
                     )}
                   </div>
@@ -343,7 +355,7 @@ export default function MoviePage({ params }: MoviePageProps) {
                       {movie.genres.map((genre) => (
                         <Link
                           key={genre.id}
-                          href={`/genre/${genre.id}`}
+                          href={generateGenreUrl(genre.id, genre.name, 'movie')}
                           className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-200 cursor-pointer"
                         >
                           {genre.name}
@@ -455,25 +467,27 @@ export default function MoviePage({ params }: MoviePageProps) {
                       Información Técnica
                     </h2>
                     <div className="grid grid-cols-2 gap-4 text-gray-300">
-                      <div>
-                        <span className="font-semibold">Duración:</span> {formatRuntime(movie.runtime || 0)}
+                      <div className="flex items-center gap-2 px-1">
+                        <span className="font-semibold text-white text-sm sm:text-base" title="País de producción">País:</span> {movie.production_countries.map((country) => country.name).join(', ')}  <span className="text-gray-400 text-xs">({movie.production_countries.map((country) => country.iso_3166_1).join(', ')})</span>
                       </div>
                       <div>
-                        <span className="font-semibold">Año:</span> {movie.release_date?.substring(0, 4)}
+                        {
+                          movie.spoken_languages && movie.spoken_languages.length > 0 && (
+                            <div className="flex items-center gap-2 px-1">
+                              <span className="font-semibold text-white text-sm sm:text-base" title="Idiomas hablados">Idiomas:</span> {movie.spoken_languages.map((language) => language.name).join(', ')}
+                            </div>
+                          )
+                        }
                       </div>
                       <div>
-                        <span className="font-semibold">Rating:</span> {movie.vote_average?.toFixed(1)}/10
-                      </div>
-                      <div>
-                        <span className="font-semibold">Director:</span>
-                        {director && (
-                          <Link
-                            href={getPersonUrl(director)}
-                            className="text-blue-400 hover:text-blue-300 transition-colors duration-200 ml-1"
-                          >
-                            {director.name}
-                          </Link>
-                        )}
+                        {
+                          movie.status && (
+                            <div className="flex items-center gap-2 px-1">
+                              <span className="font-semibold text-white text-sm sm:text-base" title="Estado de la película">Estado:</span>
+                              <span className="text-gray-400 text-xs">{movie.status === 'Released' ? "Finalizado" : movie.status}</span>
+                            </div>
+                          )
+                        } 
                       </div>
                     </div>
                   </div>
@@ -489,7 +503,7 @@ export default function MoviePage({ params }: MoviePageProps) {
                         {recommendedMovies.results.slice(0, 8).map((similarMovie: Movie) => (
                           <Link
                             key={similarMovie.id}
-                            href={`/movie/${similarMovie.id}-${encodeURIComponent(similarMovie.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || '')}`}
+                            href={generateMovieUrl(similarMovie.id, similarMovie.title || '')}
                             className="group bg-gray-700/50 rounded-lg overflow-hidden hover:bg-gray-600/50 transition-all duration-300"
                           >
                             <div className="relative aspect-[2/3] bg-gray-600">
@@ -549,7 +563,7 @@ export default function MoviePage({ params }: MoviePageProps) {
                       {mainCast.slice(0, 5).map((member: CastMember) => (
                         <Link
                           key={member.id}
-                          href={getPersonUrl(member)}
+                          href={generatePersonUrl(member.id, member.name)}
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group"
                         >
                           <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-700">
@@ -557,9 +571,10 @@ export default function MoviePage({ params }: MoviePageProps) {
                               <Image
                                 src={`https://image.tmdb.org/t/p/w92${member.profile_path}`}
                                 alt={member.name}
-                                width={40}
-                                height={40}
+                                width={92}
+                                height={92}
                                 className="w-full h-full object-cover"
+                                title={member.name}
                               />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center text-gray-500">
@@ -573,6 +588,34 @@ export default function MoviePage({ params }: MoviePageProps) {
                           </div>
                           <FiExternalLink className="h-4 w-4 text-gray-500 group-hover:text-blue-400 transition-colors duration-200" />
                         </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
+                    <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                      <FaBuilding className="h-5 w-5 text-blue-400" />
+                      Producido por:
+                    </h2>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {movie.production_companies.map((company) => (
+                        <div key={company.id} className="flex items-center gap-2 w-10 h-10">
+                          {company.logo_path ? (
+                            <>
+                              <Image 
+                                src={`https://image.tmdb.org/t/p/w92${company.logo_path}`} 
+                                alt={company.name} 
+                                width={92} 
+                                height={92} 
+                                className="w-full h-full object-cover" 
+                                title={company.name} 
+                              />
+                            </>
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-500">
+                              <FiVideo className="h-5 w-5" title={company.name} />
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>

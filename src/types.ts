@@ -12,6 +12,11 @@ export interface Movie {
   genres?: { id: number; name: string }[];
   runtime?: number;
   backdrop_path: string;
+  homepage: string;
+  production_companies: { id: number; logo_path: string; name: string }[];
+  production_countries: { iso_3166_1: string; name: string }[];
+  spoken_languages: { iso_639_1: string; name: string }[];
+  status: string;
   media_type?: 'movie' | 'tv';
 }
 
@@ -48,6 +53,7 @@ export interface Video {
   site: string;
   type: string;
   official?: boolean;
+  published_at?: string;
 }
 
 export interface VideosResponse {

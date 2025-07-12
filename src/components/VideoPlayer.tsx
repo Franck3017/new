@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { FiPlay, FiX, FiExternalLink } from 'react-icons/fi';
+import Image from 'next/image';
+import '@justinribeiro/lite-youtube';
 
 interface Video {
   id: string;
@@ -65,7 +67,7 @@ export default function VideoPlayer({ videos }: VideoPlayerProps) {
             >
               {/* Thumbnail */}
               <div className="relative aspect-video bg-gray-700">
-                <img
+                <Image
                   src={`https://img.youtube.com/vi/${video.key}/maxresdefault.jpg`}
                   alt={video.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -73,6 +75,8 @@ export default function VideoPlayer({ videos }: VideoPlayerProps) {
                     const target = e.target as HTMLImageElement;
                     target.src = `https://img.youtube.com/vi/${video.key}/hqdefault.jpg`;
                   }}
+                  width={640}
+                  height={360}
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                   <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300">
@@ -123,10 +127,12 @@ export default function VideoPlayer({ videos }: VideoPlayerProps) {
                   onClick={() => openVideo(video)}
                 >
                   <div className="relative w-16 h-12 bg-gray-700 rounded overflow-hidden flex-shrink-0">
-                    <img
+                    <Image
                       src={`https://img.youtube.com/vi/${video.key}/default.jpg`}
                       alt={video.name}
                       className="w-full h-full object-cover"
+                      width={64}
+                      height={36}
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                       <FiPlay className="h-4 w-4 text-white" />

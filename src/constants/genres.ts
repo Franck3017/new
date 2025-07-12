@@ -1,6 +1,6 @@
 // Géneros de películas
 import {
-  FiZap, FiMap, FiSmile, FiFilm, FiUser, FiFeather, FiBookOpen, FiAlertTriangle, FiMusic,
+  FiZap, FiMap, FiSmile, FiUser, FiFeather, FiBookOpen, FiAlertTriangle, FiMusic,
   FiEye, FiHeart, FiCpu, FiTv, FiAlertCircle, FiShield, FiFlag, FiSun, FiStar
 } from 'react-icons/fi';
 

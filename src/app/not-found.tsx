@@ -16,6 +16,7 @@ import {
   FiRefreshCw,
   FiExternalLink
 } from 'react-icons/fi';
+import { ROUTES } from '@/utils/urlHelpers';
 
 export default function NotFound() {
   const router = useRouter();
@@ -83,28 +84,28 @@ export default function NotFound() {
     { 
       icon: FiHome, 
       label: 'Inicio', 
-      href: '/', 
+      href: ROUTES.HOME, 
       color: 'from-blue-500 to-blue-600',
       description: 'Volver al inicio'
     },
     { 
       icon: FiSearch, 
       label: 'Buscar', 
-      href: '/search', 
+      href: ROUTES.SEARCH, 
       color: 'from-green-500 to-green-600',
       description: 'Buscar películas'
     },
     { 
       icon: FiHeart, 
       label: 'Favoritos', 
-      href: '/favorites', 
+      href: ROUTES.FAVORITES, 
       color: 'from-red-500 to-red-600',
       description: 'Ver favoritos'
     },
     { 
       icon: FiCompass, 
       label: 'Explorar', 
-      href: '/people', 
+      href: ROUTES.PEOPLE, 
       color: 'from-purple-500 to-purple-600',
       description: 'Explorar personas'
     }
@@ -237,7 +238,7 @@ export default function NotFound() {
           </button>
           
           <Link
-            href="/"
+            href={ROUTES.HOME}
             className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
           >
             <FiHome className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
@@ -288,14 +289,14 @@ export default function NotFound() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/search"
+                href={ROUTES.SEARCH}
                 className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
               >
                 <FiSearch className="h-4 w-4" />
                 Buscar películas
               </Link>
               <Link
-                href="/people"
+                href={ROUTES.PEOPLE}
                 className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors duration-200"
               >
                 <FiCompass className="h-4 w-4" />

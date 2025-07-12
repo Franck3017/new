@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   html {
@@ -35,6 +33,89 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+/* Animación para el indicador de progreso */
+@keyframes progress-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Efectos de transición mejorados */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Prevenir saltos durante las transiciones */
+.page-content {
+  will-change: transform, opacity;
+  transform-origin: center top;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Asegurar que el contenido no se desplace durante las transiciones */
+body {
+  overflow-x: hidden;
+}
+
+/* Optimizar las animaciones para GPU */
+.page-content > * {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Prevenir layout shift durante las transiciones */
+.page-content {
+  contain: layout style paint;
+}
+
+/* Estilos para la transición suave */
+.smooth-page-content {
+  /* will-change: transform, opacity; */
+  transform-origin: center top;
+  backface-visibility: hidden;
+  /* perspective: 1000px; */
+  contain: style;
+  transform: translateZ(0);
+}
+
+/* Prevenir saltos en el scroll durante las transiciones */
+html {
+  scroll-behavior: auto;
+}
+
+/* Asegurar que las imágenes no causen saltos */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Optimizar el rendimiento de las animaciones */
+* {
+  box-sizing: border-box;
 }
 
 @keyframes fadeInUp {
@@ -607,5 +688,104 @@
 @media (prefers-contrast: high) {
   .high-contrast {
     @apply border-2 border-current;
+  }
+}
+
+/* Animaciones para skeletons mejoradas */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes skeletonGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Clases de utilidad para skeletons */
+.skeleton-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+.skeleton-pulse {
+  animation: skeletonPulse 2s ease-in-out infinite;
+}
+
+.skeleton-glow {
+  background: linear-gradient(90deg, 
+    rgba(156, 163, 175, 0.1) 25%, 
+    rgba(156, 163, 175, 0.3) 50%, 
+    rgba(156, 163, 175, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonGlow 2s ease-in-out infinite;
+}
+
+/* Efectos específicos para MovieCardSkeleton */
+.skeleton-card {
+  background: linear-gradient(135deg, 
+    rgba(31, 41, 55, 0.8) 0%, 
+    rgba(55, 65, 81, 0.8) 50%, 
+    rgba(31, 41, 55, 0.8) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.skeleton-image {
+  background: linear-gradient(135deg, 
+    rgba(75, 85, 99, 0.8) 0%, 
+    rgba(107, 114, 128, 0.8) 50%, 
+    rgba(75, 85, 99, 0.8) 100%
+  );
+}
+
+.skeleton-text {
+  background: linear-gradient(90deg, 
+    rgba(75, 85, 99, 0.6) 0%, 
+    rgba(107, 114, 128, 0.6) 50%, 
+    rgba(75, 85, 99, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonGlow 2s ease-in-out infinite;
+}
+
+/* Hover effects para skeletons */
+.skeleton-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments para skeletons */
+@media (max-width: 640px) {
+  .skeleton-card {
+    border-radius: 1rem;
+  }
+  
+  .skeleton-image {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skeleton-card:hover {
+    transform: translateY(-4px) scale(1.02);
   }
 }

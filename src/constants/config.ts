@@ -125,9 +125,9 @@ export const ROUTES = {
   HOME: '/',
   SEARCH: '/search',
   MOVIE_DETAILS: '/movie/[id]',
-  PERSON_DETAILS: '/person/[id]',
+  PERSON_DETAILS: '/persona/[id]',
   PEOPLE: '/people',
-  FAVORITES: '/favorites',
+  FAVORITES: '/favoritos',
   ABOUT: '/about',
   SETTINGS: '/settings'
 } as const;

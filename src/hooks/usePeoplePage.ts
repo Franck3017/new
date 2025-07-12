@@ -45,6 +45,12 @@ export const usePeoplePage = (): [PeoplePageState, PeoplePageActions] => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  
+  // Función wrapper para setCurrentPage que valida el valor
+  const setValidCurrentPage = (page: number) => {
+    const validPage = Math.max(1, Math.min(500, Math.floor(Number(page)) || 1));
+    setCurrentPage(validPage);
+  };
   const [totalPages, setTotalPages] = useState(1);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -116,12 +122,22 @@ export const usePeoplePage = (): [PeoplePageState, PeoplePageActions] => {
   const fetchPeople = async () => {
     try {
       setLoading(true);
+      
+      // Validar que currentPage sea un número válido
+      const validPage = Math.max(1, Math.min(500, Math.floor(Number(currentPage)) || 1));
+      
+      // Si la página actual no es válida, corregirla
+      if (validPage !== currentPage) {
+        setValidCurrentPage(validPage);
+        return; // Salir y esperar el siguiente render
+      }
+      
       let data;
       
       if (searchQuery.trim()) {
-        data = await searchPeople(searchQuery, currentPage);
+        data = await searchPeople(searchQuery, validPage);
       } else {
-        data = await getPopularPeople(currentPage);
+        data = await getPopularPeople(validPage);
       }
       
       const sortedPeople = sortPeople(data.results, sortBy);
@@ -161,24 +177,27 @@ export const usePeoplePage = (): [PeoplePageState, PeoplePageActions] => {
   // Función para limpiar búsqueda
   const clearSearch = () => {
     setSearchQuery('');
-    setCurrentPage(1);
+    setValidCurrentPage(1);
   };
 
   // Función para aplicar búsqueda desde historial
   const applySearchFromHistory = (query: string) => {
     setSearchQuery(query);
-    setCurrentPage(1);
+    setValidCurrentPage(1);
   };
 
   // Función para cambiar página con mejor UX
   const changePage = (newPage: number) => {
-    if (newPage < 1 || newPage > totalPages || newPage === currentPage || loading) {
+    // Validar que newPage sea un número válido
+    const validNewPage = Math.max(1, Math.min(500, Math.floor(Number(newPage)) || 1));
+    
+    if (validNewPage > totalPages || validNewPage === currentPage || loading) {
       return;
     }
     
     setIsPaginationLoading(true);
     setLastPageChange(Date.now());
-    setCurrentPage(newPage);
+    setValidCurrentPage(validNewPage);
     
     // Scroll suave hacia arriba
     window.scrollTo({
@@ -209,7 +228,7 @@ export const usePeoplePage = (): [PeoplePageState, PeoplePageActions] => {
   // Función para manejar el envío del formulario
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setCurrentPage(1);
+    setValidCurrentPage(1);
     fetchPeople();
   };
 
@@ -253,7 +272,7 @@ export const usePeoplePage = (): [PeoplePageState, PeoplePageActions] => {
 
   const actions: PeoplePageActions = {
     setSearchQuery,
-    setCurrentPage,
+    setCurrentPage: setValidCurrentPage,
     setViewMode,
     setSortBy,
     setIsFilterExpanded,

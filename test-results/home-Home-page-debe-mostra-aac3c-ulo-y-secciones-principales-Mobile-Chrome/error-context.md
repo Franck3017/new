@@ -1,0 +1,1908 @@
+# Page snapshot
+
+```yaml
+- alert
+- navigation:
+  - link "C CineGemini":
+    - /url: /
+  - button "Abrir menú móvil":
+    - img
+- main:
+  - heading "Cine Gemini" [level=1]
+  - paragraph: Descubre el universo cinematográfico con inteligencia artificial avanzada.
+  - textbox "Buscar películas, series, actores..."
+  - button:
+    - img
+  - img "La vieja guardia 2"
+  - img
+  - text: "6.2 #1 2025"
+  - heading "La vieja guardia 2" [level=3]
+  - paragraph: Andy y su equipo de guerreros inmortales luchan con un propósito renovado y se enfrentan a un nuevo y poderoso enemigo que amenaza su misión de proteger a la humanidad.
+  - link "Ver Detalles":
+    - /url: /movie/846422-la-vieja-guardia-2
+    - img
+    - text: Ver Detalles
+  - button:
+    - img
+  - button:
+    - img
+  - button
+  - button:
+    - img
+  - text: PELÍCULAS
+  - img
+  - heading "Películas Populares" [level=2]
+  - link "Ver Todo":
+    - /url: /category/popular
+  - link "Ver detalles de la película La vieja guardia 2":
+    - /url: /movie/846422-la-vieja-guardia-2
+    - img
+    - text: "6.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La vieja guardia 2"
+    - heading "La vieja guardia 2" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Bailarina":
+    - /url: /movie/541671-bailarina
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Bailarina"
+    - heading "Bailarina" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Jefes de Estado":
+    - /url: /movie/749170-jefes-de-estado
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Jefes de Estado"
+    - img
+    - heading "Jefes de Estado" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Thunderbolts*":
+    - /url: /movie/986056-thunderbolts-
+    - img
+    - text: "7.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Thunderbolts*"
+    - img
+    - heading "Thunderbolts*" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Ice Road: Vengeance"':
+    - /url: /movie/1119878-ice-road-vengeance
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Ice Road: Vengeance"'
+    - img
+    - 'heading "Ice Road: Vengeance" [level=3]'
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Jurassic World: El renacer"':
+    - /url: /movie/1234821-jurassic-world-el-renacer
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Jurassic World: El renacer"'
+    - img
+    - 'heading "Jurassic World: El renacer" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Devuélvemela":
+    - /url: /movie/1151031-devu-lvemela
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Devuélvemela"
+    - heading "Devuélvemela" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Destino final: Lazos de sangre"':
+    - /url: /movie/574475-destino-final-lazos-de-sangre
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Destino final: Lazos de sangre"'
+    - img
+    - 'heading "Destino final: Lazos de sangre" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Lilo y Stitch":
+    - /url: /movie/552524-lilo-y-stitch
+    - img
+    - text: "7.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Lilo y Stitch"
+    - img
+    - heading "Lilo y Stitch" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película The Ritual":
+    - /url: /movie/1278950-the-ritual
+    - img
+    - text: "6.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Ritual"
+    - heading "The Ritual" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Las guerreras k-pop":
+    - /url: /movie/803796-las-guerreras-k-pop
+    - img
+    - text: "8.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Las guerreras k-pop"
+    - img
+    - heading "Las guerreras k-pop" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Cómo entrenar a tu dragón":
+    - /url: /movie/1087192-c-mo-entrenar-a-tu-drag-n
+    - img
+    - text: "7.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Cómo entrenar a tu dragón"
+    - img
+    - heading "Cómo entrenar a tu dragón" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Dora en busca del Sol Dorado":
+    - /url: /movie/1287536-dora-en-busca-del-sol-dorado
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Dora en busca del Sol Dorado"
+    - img
+    - heading "Dora en busca del Sol Dorado" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película 室町無頼":
+    - /url: /movie/1246369--
+    - img
+    - text: "9.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 室町無頼"
+    - img
+    - heading "室町無頼" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película F1 la película":
+    - /url: /movie/911430-f1-la-pel-cula
+    - img
+    - text: "7.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de F1 la película"
+    - img
+    - heading "F1 la película" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película The Twisters":
+    - /url: /movie/1311844-the-twisters
+    - img
+    - text: "5.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Twisters"
+    - img
+    - heading "The Twisters" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película Larga Distancia":
+    - /url: /movie/605722-larga-distancia
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Larga Distancia"
+    - img
+    - heading "Larga Distancia" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película Los pecadores":
+    - /url: /movie/1233413-los-pecadores
+    - img
+    - text: "7.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los pecadores"
+    - img
+    - heading "Los pecadores" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película First Shift":
+    - /url: /movie/1090007-first-shift
+    - img
+    - text: "5.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de First Shift"
+    - img
+    - heading "First Shift" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película Una película de Minecraft":
+    - /url: /movie/950387-una-pel-cula-de-minecraft
+    - img
+    - text: "6.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Una película de Minecraft"
+    - img
+    - heading "Una película de Minecraft" [level=3]
+    - paragraph: "2025"
+    - img
+  - img
+  - heading "Mejor Valoradas" [level=2]
+  - link "Ver Todo":
+    - /url: /category/top_rated
+  - link "Ver detalles de la película Cadena perpetua":
+    - /url: /movie/278-cadena-perpetua
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Cadena perpetua"
+    - heading "Cadena perpetua" [level=3]
+    - paragraph: "1994"
+    - img
+  - link "Ver detalles de la película El padrino":
+    - /url: /movie/238-el-padrino
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El padrino"
+    - heading "El padrino" [level=3]
+    - paragraph: "1972"
+    - img
+  - link "Ver detalles de la película Las guerreras k-pop":
+    - /url: /movie/803796-las-guerreras-k-pop
+    - img
+    - text: "8.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Las guerreras k-pop"
+    - img
+    - heading "Las guerreras k-pop" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película El Padrino Parte II":
+    - /url: /movie/240-el-padrino-parte-ii
+    - img
+    - text: "8.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El Padrino Parte II"
+    - img
+    - heading "El Padrino Parte II" [level=3]
+    - paragraph: "1974"
+    - img
+  - link "Ver detalles de la película La lista de Schindler":
+    - /url: /movie/424-la-lista-de-schindler
+    - img
+    - text: "8.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La lista de Schindler"
+    - img
+    - heading "La lista de Schindler" [level=3]
+    - paragraph: "1993"
+    - img
+  - link "Ver detalles de la película 12 hombres sin piedad":
+    - /url: /movie/389-12-hombres-sin-piedad
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 12 hombres sin piedad"
+    - img
+    - heading "12 hombres sin piedad" [level=3]
+    - paragraph: "1957"
+    - img
+  - link "Ver detalles de la película El viaje de Chihiro":
+    - /url: /movie/129-el-viaje-de-chihiro
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El viaje de Chihiro"
+    - img
+    - heading "El viaje de Chihiro" [level=3]
+    - paragraph: "2001"
+    - img
+  - link "Ver detalles de la película El caballero oscuro":
+    - /url: /movie/155-el-caballero-oscuro
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El caballero oscuro"
+    - img
+    - heading "El caballero oscuro" [level=3]
+    - paragraph: "2008"
+    - img
+  - link "Ver detalles de la película Un amor contra viento y marea":
+    - /url: /movie/19404-un-amor-contra-viento-y-marea
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Un amor contra viento y marea"
+    - img
+    - heading "Un amor contra viento y marea" [level=3]
+    - paragraph: "1995"
+    - img
+  - link "Ver detalles de la película La milla verde":
+    - /url: /movie/497-la-milla-verde
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La milla verde"
+    - img
+    - heading "La milla verde" [level=3]
+    - paragraph: "1999"
+    - img
+  - link "Ver detalles de la película Parásitos":
+    - /url: /movie/496243-par-sitos
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Parásitos"
+    - img
+    - heading "Parásitos" [level=3]
+    - paragraph: "2019"
+    - img
+  - link "Ver detalles de la película Pulp Fiction":
+    - /url: /movie/680-pulp-fiction
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Pulp Fiction"
+    - img
+    - heading "Pulp Fiction" [level=3]
+    - paragraph: "1994"
+    - img
+  - 'link "Ver detalles de la película El señor de los anillos: El retorno del rey"':
+    - /url: /movie/122-el-se-or-de-los-anillos-el-retorno-del-rey
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de El señor de los anillos: El retorno del rey"'
+    - img
+    - 'heading "El señor de los anillos: El retorno del rey" [level=3]'
+    - paragraph: "2003"
+    - img
+  - link "Ver detalles de la película Your Name":
+    - /url: /movie/372058-your-name
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Your Name"
+    - img
+    - heading "Your Name" [level=3]
+    - paragraph: "2016"
+    - img
+  - link "Ver detalles de la película Forrest Gump":
+    - /url: /movie/13-forrest-gump
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Forrest Gump"
+    - img
+    - heading "Forrest Gump" [level=3]
+    - paragraph: "1994"
+    - img
+  - link "Ver detalles de la película El bueno, el feo y el malo":
+    - /url: /movie/429-el-bueno-el-feo-y-el-malo
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El bueno, el feo y el malo"
+    - img
+    - heading "El bueno, el feo y el malo" [level=3]
+    - paragraph: "1966"
+    - img
+  - link "Ver detalles de la película Interstellar":
+    - /url: /movie/157336-interstellar
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Interstellar"
+    - img
+    - heading "Interstellar" [level=3]
+    - paragraph: "2014"
+    - img
+  - link "Ver detalles de la película Uno de los nuestros":
+    - /url: /movie/769-uno-de-los-nuestros
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Uno de los nuestros"
+    - img
+    - heading "Uno de los nuestros" [level=3]
+    - paragraph: "1990"
+    - img
+  - link "Ver detalles de la película Los siete samuráis":
+    - /url: /movie/346-los-siete-samur-is
+    - img
+    - text: "8.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los siete samuráis"
+    - img
+    - heading "Los siete samuráis" [level=3]
+    - paragraph: "1954"
+    - img
+  - link "Ver detalles de la película La tumba de las luciérnagas":
+    - /url: /movie/12477-la-tumba-de-las-luci-rnagas
+    - img
+    - text: "8.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La tumba de las luciérnagas"
+    - img
+    - heading "La tumba de las luciérnagas" [level=3]
+    - paragraph: "1988"
+    - img
+  - img
+  - heading "Actualmente en Cines" [level=2]
+  - link "Ver Todo":
+    - /url: /category/now_playing
+  - link "Ver detalles de la película La vieja guardia 2":
+    - /url: /movie/846422-la-vieja-guardia-2
+    - img
+    - text: "6.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La vieja guardia 2"
+    - heading "La vieja guardia 2" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Bailarina":
+    - /url: /movie/541671-bailarina
+    - img
+    - text: "7.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Bailarina"
+    - heading "Bailarina" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Jefes de Estado":
+    - /url: /movie/749170-jefes-de-estado
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Jefes de Estado"
+    - img
+    - heading "Jefes de Estado" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Ice Road: Vengeance"':
+    - /url: /movie/1119878-ice-road-vengeance
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Ice Road: Vengeance"'
+    - img
+    - 'heading "Ice Road: Vengeance" [level=3]'
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Jurassic World: El renacer"':
+    - /url: /movie/1234821-jurassic-world-el-renacer
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Jurassic World: El renacer"'
+    - img
+    - 'heading "Jurassic World: El renacer" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Devuélvemela":
+    - /url: /movie/1151031-devu-lvemela
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Devuélvemela"
+    - heading "Devuélvemela" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Lilo y Stitch":
+    - /url: /movie/552524-lilo-y-stitch
+    - img
+    - text: "7.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Lilo y Stitch"
+    - img
+    - heading "Lilo y Stitch" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Las guerreras k-pop":
+    - /url: /movie/803796-las-guerreras-k-pop
+    - img
+    - text: "8.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Las guerreras k-pop"
+    - img
+    - heading "Las guerreras k-pop" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película The Ritual":
+    - /url: /movie/1278950-the-ritual
+    - img
+    - text: "6.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Ritual"
+    - heading "The Ritual" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Cómo entrenar a tu dragón":
+    - /url: /movie/1087192-c-mo-entrenar-a-tu-drag-n
+    - img
+    - text: "7.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Cómo entrenar a tu dragón"
+    - img
+    - heading "Cómo entrenar a tu dragón" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Dora en busca del Sol Dorado":
+    - /url: /movie/1287536-dora-en-busca-del-sol-dorado
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Dora en busca del Sol Dorado"
+    - img
+    - heading "Dora en busca del Sol Dorado" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película F1 la película":
+    - /url: /movie/911430-f1-la-pel-cula
+    - img
+    - text: "7.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de F1 la película"
+    - img
+    - heading "F1 la película" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Los pecadores":
+    - /url: /movie/1233413-los-pecadores
+    - img
+    - text: "7.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los pecadores"
+    - img
+    - heading "Los pecadores" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película 28 años después":
+    - /url: /movie/1100988-28-a-os-despu-s
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 28 años después"
+    - img
+    - heading "28 años después" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Superman":
+    - /url: /movie/1061474-superman
+    - img
+    - text: "5.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Superman"
+    - img
+    - heading "Superman" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Misión: Imposible - Sentencia final"':
+    - /url: /movie/575265-misi-n-imposible-sentencia-final
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Misión: Imposible - Sentencia final"'
+    - img
+    - 'heading "Misión: Imposible - Sentencia final" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Diablo":
+    - /url: /movie/1127110-diablo
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Diablo"
+    - img
+    - heading "Diablo" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película M3GAN 2.0":
+    - /url: /movie/1071585-m3gan-2-0
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de M3GAN 2.0"
+    - img
+    - heading "M3GAN 2.0" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Harta":
+    - /url: /movie/1426776-harta
+    - img
+    - text: "7.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Harta"
+    - img
+    - heading "Harta" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película El juego del calamar: Hablan los protagonistas"':
+    - /url: /movie/1504735-el-juego-del-calamar-hablan-los-protagonistas
+    - img
+    - text: "8.8"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de El juego del calamar: Hablan los protagonistas"'
+    - img
+    - 'heading "El juego del calamar: Hablan los protagonistas" [level=3]'
+    - paragraph: "2025"
+    - img
+  - img
+  - heading "Próximas Películas" [level=2]
+  - link "Ver Todo":
+    - /url: /category/upcoming
+  - link "Ver detalles de la película Devuélvemela":
+    - /url: /movie/1151031-devu-lvemela
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Devuélvemela"
+    - heading "Devuélvemela" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película The Ritual":
+    - /url: /movie/1278950-the-ritual
+    - img
+    - text: "6.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Ritual"
+    - heading "The Ritual" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Superman":
+    - /url: /movie/1061474-superman
+    - img
+    - text: "5.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Superman"
+    - img
+    - heading "Superman" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película M3GAN 2.0":
+    - /url: /movie/1071585-m3gan-2-0
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de M3GAN 2.0"
+    - img
+    - heading "M3GAN 2.0" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película La hermanastra fea":
+    - /url: /movie/1284120-la-hermanastra-fea
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La hermanastra fea"
+    - img
+    - heading "La hermanastra fea" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Sonic 3: La película"':
+    - /url: /movie/939243-sonic-3-la-pel-cula
+    - img
+    - text: "7.7"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Sonic 3: La película"'
+    - img
+    - 'heading "Sonic 3: La película" [level=3]'
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película Elio":
+    - /url: /movie/1022787-elio
+    - img
+    - text: "6.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Elio"
+    - img
+    - heading "Elio" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Karate Kid: Legends"':
+    - /url: /movie/1011477-karate-kid-legends
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Karate Kid: Legends"'
+    - img
+    - 'heading "Karate Kid: Legends" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Shadow Force":
+    - /url: /movie/757725-shadow-force
+    - img
+    - text: "6.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Shadow Force"
+    - img
+    - heading "Shadow Force" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Misericordia":
+    - /url: /movie/1063574-misericordia
+    - img
+    - text: "6.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Misericordia"
+    - img
+    - heading "Misericordia" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película 映画 ギヴン 海へ":
+    - /url: /movie/1317276--
+    - img
+    - text: "9.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 映画 ギヴン 海へ"
+    - img
+    - heading "映画 ギヴン 海へ" [level=3]
+    - paragraph: "2024"
+    - img
+  - 'link "Ver detalles de la película Los Cuatro Fantásticos: Primeros pasos"':
+    - /url: /movie/617126-los-cuatro-fant-sticos-primeros-pasos
+    - img
+    - text: N/A
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Los Cuatro Fantásticos: Primeros pasos"'
+    - img
+    - 'heading "Los Cuatro Fantásticos: Primeros pasos" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Daniela Forever":
+    - /url: /movie/1084440-daniela-forever
+    - img
+    - text: "7.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Daniela Forever"
+    - img
+    - heading "Daniela Forever" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Bambi, una vida en el bosque":
+    - /url: /movie/1094473-bambi-una-vida-en-el-bosque
+    - img
+    - text: "5.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Bambi, una vida en el bosque"
+    - img
+    - heading "Bambi, una vida en el bosque" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la película La Leyenda de Ochi":
+    - /url: /movie/896536-la-leyenda-de-ochi
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de La Leyenda de Ochi"
+    - img
+    - heading "La Leyenda de Ochi" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película The Shrouds":
+    - /url: /movie/970947-the-shrouds
+    - img
+    - text: "5.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Shrouds"
+    - img
+    - heading "The Shrouds" [level=3]
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Fritos a balazos":
+    - /url: /movie/1181540-fritos-a-balazos
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Fritos a balazos"
+    - img
+    - heading "Fritos a balazos" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Guardianes de la noche: Kimetsu no Yaiba - La fortaleza infinita"':
+    - /url: /movie/1311031-guardianes-de-la-noche-kimetsu-no-yaiba-la-fortaleza-infinita
+    - img
+    - text: N/A
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Guardianes de la noche: Kimetsu no Yaiba - La fortaleza infinita"'
+    - img
+    - 'heading "Guardianes de la noche: Kimetsu no Yaiba - La fortaleza infinita" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la película Rosario":
+    - /url: /movie/1297028-rosario
+    - img
+    - text: "5.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Rosario"
+    - img
+    - heading "Rosario" [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la película Garfield: La película"':
+    - /url: /movie/748783-garfield-la-pel-cula
+    - img
+    - text: "7.1"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Garfield: La película"'
+    - img
+    - 'heading "Garfield: La película" [level=3]'
+    - paragraph: "2024"
+    - img
+  - text: SERIES DE TELEVISIÓN
+  - img
+  - heading "Series de TV Populares" [level=2]
+  - link "Ver Todo":
+    - /url: /category/popularTV
+  - link "Ver detalles de la serie El juego del calamar":
+    - /url: /tv/93405-el-juego-del-calamar
+    - img
+    - text: "7.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de El juego del calamar"
+    - heading "El juego del calamar" [level=3]
+    - paragraph: "2021"
+    - img
+  - link "Ver detalles de la serie Barátok közt":
+    - /url: /tv/50821-bar-tok-k-zt
+    - img
+    - text: "3.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Barátok közt"
+    - heading "Barátok közt" [level=3]
+    - paragraph: "1998"
+    - img
+  - link "Ver detalles de la serie Late Show with David Letterman":
+    - /url: /tv/498-late-show-with-david-letterman
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Late Show with David Letterman"
+    - img
+    - heading "Late Show with David Letterman" [level=3]
+    - paragraph: "1993"
+    - img
+  - link "Ver detalles de la serie The Late Late Show with Craig Ferguson":
+    - /url: /tv/14981-the-late-late-show-with-craig-ferguson
+    - img
+    - text: "6.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Late Late Show with Craig Ferguson"
+    - img
+    - heading "The Late Late Show with Craig Ferguson" [level=3]
+    - paragraph: "2005"
+    - img
+  - link "Ver detalles de la serie Conan":
+    - /url: /tv/32415-conan
+    - img
+    - text: "7.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Conan"
+    - img
+    - heading "Conan" [level=3]
+    - paragraph: "2010"
+    - img
+  - link "Ver detalles de la serie The Daily Show":
+    - /url: /tv/2224-the-daily-show
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Daily Show"
+    - heading "The Daily Show" [level=3]
+    - paragraph: "1996"
+    - img
+  - link "Ver detalles de la serie Aquí todo empieza":
+    - /url: /tv/112470-aqu-todo-empieza
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Aquí todo empieza"
+    - heading "Aquí todo empieza" [level=3]
+    - paragraph: "2020"
+    - img
+  - link "Ver detalles de la serie The Tonight Show Starring Jimmy Fallon":
+    - /url: /tv/59941-the-tonight-show-starring-jimmy-fallon
+    - img
+    - text: "5.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Tonight Show Starring Jimmy Fallon"
+    - img
+    - heading "The Tonight Show Starring Jimmy Fallon" [level=3]
+    - paragraph: "2014"
+    - img
+  - link "Ver detalles de la serie Real Time with Bill Maher":
+    - /url: /tv/4419-real-time-with-bill-maher
+    - img
+    - text: "6.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Real Time with Bill Maher"
+    - img
+    - heading "Real Time with Bill Maher" [level=3]
+    - paragraph: "2003"
+    - img
+  - link "Ver detalles de la serie Los Simpson":
+    - /url: /tv/456-los-simpson
+    - img
+    - text: "8.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los Simpson"
+    - img
+    - heading "Los Simpson" [level=3]
+    - paragraph: "1989"
+    - img
+  - link "Ver detalles de la serie The Late Late Show with James Corden":
+    - /url: /tv/62223-the-late-late-show-with-james-corden
+    - img
+    - text: "5.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Late Late Show with James Corden"
+    - img
+    - heading "The Late Late Show with James Corden" [level=3]
+    - paragraph: "2015"
+    - img
+  - link "Ver detalles de la serie Good Mythical Morning":
+    - /url: /tv/65701-good-mythical-morning
+    - img
+    - text: "7.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Good Mythical Morning"
+    - img
+    - heading "Good Mythical Morning" [level=3]
+    - paragraph: "2012"
+    - img
+  - link "Ver detalles de la serie 라디오스타":
+    - /url: /tv/65270--
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 라디오스타"
+    - img
+    - heading "라디오스타" [level=3]
+    - paragraph: "2007"
+    - img
+  - link "Ver detalles de la serie Doraemon, el gato cósmico":
+    - /url: /tv/65733-doraemon-el-gato-c-smico
+    - img
+    - text: "8.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Doraemon, el gato cósmico"
+    - img
+    - heading "Doraemon, el gato cósmico" [level=3]
+    - paragraph: "2005"
+    - img
+  - link "Ver detalles de la serie Mentes criminales":
+    - /url: /tv/4057-mentes-criminales
+    - img
+    - text: "8.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Mentes criminales"
+    - img
+    - heading "Mentes criminales" [level=3]
+    - paragraph: "2005"
+    - img
+  - 'link "Ver detalles de la serie Ley y orden: Unidad de Víctimas Especiales"':
+    - /url: /tv/2734-ley-y-orden-unidad-de-v-ctimas-especiales
+    - img
+    - text: "7.9"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Ley y orden: Unidad de Víctimas Especiales"'
+    - img
+    - 'heading "Ley y orden: Unidad de Víctimas Especiales" [level=3]'
+    - paragraph: "1999"
+    - img
+  - link "Ver detalles de la serie The Late Show with Stephen Colbert":
+    - /url: /tv/63770-the-late-show-with-stephen-colbert
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Late Show with Stephen Colbert"
+    - img
+    - heading "The Late Show with Stephen Colbert" [level=3]
+    - paragraph: "2015"
+    - img
+  - link "Ver detalles de la serie This Old House":
+    - /url: /tv/2394-this-old-house
+    - img
+    - text: "5.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de This Old House"
+    - img
+    - heading "This Old House" [level=3]
+    - paragraph: "1979"
+    - img
+  - 'link "Ver detalles de la serie Egoli: Place of Gold"':
+    - /url: /tv/12415-egoli-place-of-gold
+    - img
+    - text: "6.8"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Egoli: Place of Gold"'
+    - img
+    - 'heading "Egoli: Place of Gold" [level=3]'
+    - paragraph: "1992"
+    - img
+  - link "Ver detalles de la serie Teen Titans Go!":
+    - /url: /tv/45140-teen-titans-go-
+    - img
+    - text: "6.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Teen Titans Go!"
+    - img
+    - heading "Teen Titans Go!" [level=3]
+    - paragraph: "2013"
+    - img
+  - img
+  - heading "Series de TV Mejor Valoradas" [level=2]
+  - link "Ver Todo":
+    - /url: /category/topRatedTV
+  - link "Ver detalles de la serie Breaking Bad":
+    - /url: /tv/1396-breaking-bad
+    - img
+    - text: "8.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Breaking Bad"
+    - heading "Breaking Bad" [level=3]
+    - paragraph: "2008"
+    - img
+  - 'link "Ver detalles de la serie Frieren: Tras finalizar el viaje"':
+    - /url: /tv/209867-frieren-tras-finalizar-el-viaje
+    - img
+    - text: "8.8"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Frieren: Tras finalizar el viaje"'
+    - 'heading "Frieren: Tras finalizar el viaje" [level=3]'
+    - paragraph: "2023"
+    - img
+  - link "Ver detalles de la serie Arcane":
+    - /url: /tv/94605-arcane
+    - img
+    - text: "8.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Arcane"
+    - img
+    - heading "Arcane" [level=3]
+    - paragraph: "2021"
+    - img
+  - 'link "Ver detalles de la serie Avatar: La leyenda de Aang"':
+    - /url: /tv/246-avatar-la-leyenda-de-aang
+    - img
+    - text: "8.8"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Avatar: La leyenda de Aang"'
+    - img
+    - 'heading "Avatar: La leyenda de Aang" [level=3]'
+    - paragraph: "2005"
+    - img
+  - 'link "Ver detalles de la serie Hora de aventuras: Fionna y Cake"':
+    - /url: /tv/131378-hora-de-aventuras-fionna-y-cake
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Hora de aventuras: Fionna y Cake"'
+    - img
+    - 'heading "Hora de aventuras: Fionna y Cake" [level=3]'
+    - paragraph: "2023"
+    - img
+  - link "Ver detalles de la serie One Piece":
+    - /url: /tv/37854-one-piece
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de One Piece"
+    - img
+    - heading "One Piece" [level=3]
+    - paragraph: "1999"
+    - img
+  - link "Ver detalles de la serie Si la vida te da mandarinas...":
+    - /url: /tv/219246-si-la-vida-te-da-mandarinas-
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Si la vida te da mandarinas..."
+    - img
+    - heading "Si la vida te da mandarinas..." [level=3]
+    - paragraph: "2025"
+    - img
+  - 'link "Ver detalles de la serie Fullmetal Alchemist: Brotherhood"':
+    - /url: /tv/31911-fullmetal-alchemist-brotherhood
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Fullmetal Alchemist: Brotherhood"'
+    - img
+    - 'heading "Fullmetal Alchemist: Brotherhood" [level=3]'
+    - paragraph: "2009"
+    - img
+  - link "Ver detalles de la serie Better Call Saul":
+    - /url: /tv/60059-better-call-saul
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Better Call Saul"
+    - img
+    - heading "Better Call Saul" [level=3]
+    - paragraph: "2015"
+    - img
+  - link "Ver detalles de la serie Hazbin Hotel":
+    - /url: /tv/94954-hazbin-hotel
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Hazbin Hotel"
+    - img
+    - heading "Hazbin Hotel" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la serie Chernobyl":
+    - /url: /tv/87108-chernobyl
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Chernobyl"
+    - img
+    - heading "Chernobyl" [level=3]
+    - paragraph: "2019"
+    - img
+  - link "Ver detalles de la serie Rick y Morty":
+    - /url: /tv/60625-rick-y-morty
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Rick y Morty"
+    - img
+    - heading "Rick y Morty" [level=3]
+    - paragraph: "2013"
+    - img
+  - link "Ver detalles de la serie Ataque a los Titanes":
+    - /url: /tv/1429-ataque-a-los-titanes
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Ataque a los Titanes"
+    - img
+    - heading "Ataque a los Titanes" [level=3]
+    - paragraph: "2013"
+    - img
+  - link "Ver detalles de la serie Casa Búho":
+    - /url: /tv/92685-casa-b-ho
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Casa Búho"
+    - img
+    - heading "Casa Búho" [level=3]
+    - paragraph: "2020"
+    - img
+  - link "Ver detalles de la serie Hunter × Hunter":
+    - /url: /tv/46298-hunter-hunter
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Hunter × Hunter"
+    - img
+    - heading "Hunter × Hunter" [level=3]
+    - paragraph: "2011"
+    - img
+  - link "Ver detalles de la serie The Chosen (Los elegidos)":
+    - /url: /tv/85077-the-chosen-los-elegidos-
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Chosen (Los elegidos)"
+    - img
+    - heading "The Chosen (Los elegidos)" [level=3]
+    - paragraph: "2019"
+    - img
+  - link "Ver detalles de la serie Los diarios de la boticaria":
+    - /url: /tv/220542-los-diarios-de-la-boticaria
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los diarios de la boticaria"
+    - img
+    - heading "Los diarios de la boticaria" [level=3]
+    - paragraph: "2023"
+    - img
+  - link "Ver detalles de la serie Anne with an E":
+    - /url: /tv/70785-anne-with-an-e
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Anne with an E"
+    - img
+    - heading "Anne with an E" [level=3]
+    - paragraph: "2017"
+    - img
+  - 'link "Ver detalles de la serie Espíritu de lucha: Hajime no Ippo"':
+    - /url: /tv/42705-esp-ritu-de-lucha-hajime-no-ippo
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Espíritu de lucha: Hajime no Ippo"'
+    - img
+    - 'heading "Espíritu de lucha: Hajime no Ippo" [level=3]'
+    - paragraph: "2000"
+    - img
+  - link "Ver detalles de la serie Los Soprano":
+    - /url: /tv/1398-los-soprano
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Los Soprano"
+    - img
+    - heading "Los Soprano" [level=3]
+    - paragraph: "1999"
+    - img
+  - img
+  - heading "Series Actualmente en Emisión" [level=2]
+  - link "Ver Todo":
+    - /url: /category/onAirTV
+  - link "Ver detalles de la serie The Daily Show":
+    - /url: /tv/2224-the-daily-show
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Daily Show"
+    - heading "The Daily Show" [level=3]
+    - paragraph: "1996"
+    - img
+  - link "Ver detalles de la serie Aquí todo empieza":
+    - /url: /tv/112470-aqu-todo-empieza
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Aquí todo empieza"
+    - heading "Aquí todo empieza" [level=3]
+    - paragraph: "2020"
+    - img
+  - link "Ver detalles de la serie 라디오스타":
+    - /url: /tv/65270--
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 라디오스타"
+    - img
+    - heading "라디오스타" [level=3]
+    - paragraph: "2007"
+    - img
+  - link "Ver detalles de la serie Mentes criminales":
+    - /url: /tv/4057-mentes-criminales
+    - img
+    - text: "8.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Mentes criminales"
+    - img
+    - heading "Mentes criminales" [level=3]
+    - paragraph: "2005"
+    - img
+  - 'link "Ver detalles de la serie Chespirito: Sin querer queriendo"':
+    - /url: /tv/279060-chespirito-sin-querer-queriendo
+    - img
+    - text: "8.0"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Chespirito: Sin querer queriendo"'
+    - img
+    - 'heading "Chespirito: Sin querer queriendo" [level=3]'
+    - paragraph: "2025"
+    - img
+  - link "Ver detalles de la serie Hombres en una Misión":
+    - /url: /tv/70672-hombres-en-una-misi-n
+    - img
+    - text: "7.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Hombres en una Misión"
+    - img
+    - heading "Hombres en una Misión" [level=3]
+    - paragraph: "2015"
+    - img
+  - link "Ver detalles de la serie Demain nous appartient":
+    - /url: /tv/72879-demain-nous-appartient
+    - img
+    - text: "6.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Demain nous appartient"
+    - img
+    - heading "Demain nous appartient" [level=3]
+    - paragraph: "2017"
+    - img
+  - link "Ver detalles de la serie 2 Días y 1 Noche":
+    - /url: /tv/30801-2-d-as-y-1-noche
+    - img
+    - text: "7.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 2 Días y 1 Noche"
+    - img
+    - heading "2 Días y 1 Noche" [level=3]
+    - paragraph: "2007"
+    - img
+  - link "Ver detalles de la serie Jeopardy!":
+    - /url: /tv/2912-jeopardy-
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Jeopardy!"
+    - img
+    - heading "Jeopardy!" [level=3]
+    - paragraph: "1984"
+    - img
+  - link "Ver detalles de la serie Rick y Morty":
+    - /url: /tv/60625-rick-y-morty
+    - img
+    - text: "8.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Rick y Morty"
+    - img
+    - heading "Rick y Morty" [level=3]
+    - paragraph: "2013"
+    - img
+  - link "Ver detalles de la serie LIVE with Kelly and Mark":
+    - /url: /tv/1900-live-with-kelly-and-mark
+    - img
+    - text: "5.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de LIVE with Kelly and Mark"
+    - img
+    - heading "LIVE with Kelly and Mark" [level=3]
+    - paragraph: "1988"
+    - img
+  - link "Ver detalles de la serie Padre de familia":
+    - /url: /tv/1434-padre-de-familia
+    - img
+    - text: "7.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Padre de familia"
+    - img
+    - heading "Padre de familia" [level=3]
+    - paragraph: "1999"
+    - img
+  - link "Ver detalles de la serie Detective Conan":
+    - /url: /tv/30983-detective-conan
+    - img
+    - text: "8.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Detective Conan"
+    - img
+    - heading "Detective Conan" [level=3]
+    - paragraph: "1996"
+    - img
+  - link "Ver detalles de la serie Gente de barrio":
+    - /url: /tv/1871-gente-de-barrio
+    - img
+    - text: "4.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Gente de barrio"
+    - img
+    - heading "Gente de barrio" [level=3]
+    - paragraph: "1985"
+    - img
+  - link "Ver detalles de la serie 미운 우리 새끼":
+    - /url: /tv/72896--
+    - img
+    - text: "6.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 미운 우리 새끼"
+    - img
+    - heading "미운 우리 새끼" [level=3]
+    - paragraph: "2016"
+    - img
+  - link "Ver detalles de la serie Coronation Street":
+    - /url: /tv/291-coronation-street
+    - img
+    - text: "5.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Coronation Street"
+    - img
+    - heading "Coronation Street" [level=3]
+    - paragraph: "1960"
+    - img
+  - link "Ver detalles de la serie Barrio Sésamo":
+    - /url: /tv/502-barrio-s-samo
+    - img
+    - text: "7.1"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Barrio Sésamo"
+    - img
+    - heading "Barrio Sésamo" [level=3]
+    - paragraph: "1969"
+    - img
+  - link "Ver detalles de la serie Raw":
+    - /url: /tv/4656-raw
+    - img
+    - text: "6.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Raw"
+    - img
+    - heading "Raw" [level=3]
+    - paragraph: "1993"
+    - img
+  - 'link "Ver detalles de la serie Amazing Saturday: Music Bites"':
+    - /url: /tv/78648-amazing-saturday-music-bites
+    - img
+    - text: "7.3"
+    - button "Agregar a favoritos":
+      - img
+    - 'img "Póster de Amazing Saturday: Music Bites"'
+    - img
+    - 'heading "Amazing Saturday: Music Bites" [level=3]'
+    - paragraph: "2018"
+    - img
+  - link "Ver detalles de la serie 奔跑吧兄弟":
+    - /url: /tv/98031--
+    - img
+    - text: "5.8"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 奔跑吧兄弟"
+    - img
+    - heading "奔跑吧兄弟" [level=3]
+    - paragraph: "2014"
+    - img
+  - img
+  - heading "Series que se Emiten Hoy" [level=2]
+  - link "Ver Todo":
+    - /url: /category/airingTodayTV
+  - link "Ver detalles de la serie The Daily Show":
+    - /url: /tv/2224-the-daily-show
+    - img
+    - text: "6.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de The Daily Show"
+    - heading "The Daily Show" [level=3]
+    - paragraph: "1996"
+    - img
+  - link "Ver detalles de la serie Aquí todo empieza":
+    - /url: /tv/112470-aqu-todo-empieza
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Aquí todo empieza"
+    - heading "Aquí todo empieza" [level=3]
+    - paragraph: "2020"
+    - img
+  - link "Ver detalles de la serie Demain nous appartient":
+    - /url: /tv/72879-demain-nous-appartient
+    - img
+    - text: "6.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Demain nous appartient"
+    - img
+    - heading "Demain nous appartient" [level=3]
+    - paragraph: "2017"
+    - img
+  - link "Ver detalles de la serie Jeopardy!":
+    - /url: /tv/2912-jeopardy-
+    - img
+    - text: "6.9"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Jeopardy!"
+    - img
+    - heading "Jeopardy!" [level=3]
+    - paragraph: "1984"
+    - img
+  - link "Ver detalles de la serie LIVE with Kelly and Mark":
+    - /url: /tv/1900-live-with-kelly-and-mark
+    - img
+    - text: "5.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de LIVE with Kelly and Mark"
+    - img
+    - heading "LIVE with Kelly and Mark" [level=3]
+    - paragraph: "1988"
+    - img
+  - link "Ver detalles de la serie Honest Trailers":
+    - /url: /tv/122843-honest-trailers
+    - img
+    - text: "6.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Honest Trailers"
+    - img
+    - heading "Honest Trailers" [level=3]
+    - paragraph: "2012"
+    - img
+  - link "Ver detalles de la serie America's Got Talent":
+    - /url: /tv/4551-america-s-got-talent
+    - img
+    - text: "5.7"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de America's Got Talent"
+    - img
+    - heading "America's Got Talent" [level=3]
+    - paragraph: "2006"
+    - img
+  - link "Ver detalles de la serie Home and Away":
+    - /url: /tv/2354-home-and-away
+    - img
+    - text: "6.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Home and Away"
+    - img
+    - heading "Home and Away" [level=3]
+    - paragraph: "1988"
+    - img
+  - link "Ver detalles de la serie Suidooster":
+    - /url: /tv/235484-suidooster
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Suidooster"
+    - img
+    - heading "Suidooster" [level=3]
+    - paragraph: "2015"
+    - img
+  - link "Ver detalles de la serie Como Si Fuera Ayer":
+    - /url: /tv/260609-como-si-fuera-ayer
+    - img
+    - text: N/A
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Como Si Fuera Ayer"
+    - img
+    - heading "Como Si Fuera Ayer" [level=3]
+    - paragraph: "2017"
+    - img
+  - link "Ver detalles de la serie Martial Master":
+    - /url: /tv/110181-martial-master
+    - img
+    - text: "8.3"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Martial Master"
+    - img
+    - heading "Martial Master" [level=3]
+    - paragraph: "2020"
+    - img
+  - link "Ver detalles de la serie Kelders van Geheime":
+    - /url: /tv/249010-kelders-van-geheime
+    - img
+    - text: "6.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Kelders van Geheime"
+    - img
+    - heading "Kelders van Geheime" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la serie Sueños de libertad":
+    - /url: /tv/239526-sue-os-de-libertad
+    - img
+    - text: "6.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Sueños de libertad"
+    - img
+    - heading "Sueños de libertad" [level=3]
+    - paragraph: "2024"
+    - img
+  - link "Ver detalles de la serie 愛·回家之開心速遞":
+    - /url: /tv/91759--
+    - img
+    - text: "5.4"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de 愛·回家之開心速遞"
+    - img
+    - heading "愛·回家之開心速遞" [level=3]
+    - paragraph: "2017"
+    - img
+  - link "Ver detalles de la serie Vecinos":
+    - /url: /tv/2674-vecinos
+    - img
+    - text: "6.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Vecinos"
+    - img
+    - heading "Vecinos" [level=3]
+    - paragraph: "1985"
+    - img
+  - link "Ver detalles de la serie Belleza y poder":
+    - /url: /tv/6647-belleza-y-poder
+    - img
+    - text: "5.5"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Belleza y poder"
+    - img
+    - heading "Belleza y poder" [level=3]
+    - paragraph: "1987"
+    - img
+  - link "Ver detalles de la serie Love Island (Estados Unidos)":
+    - /url: /tv/90521-love-island-estados-unidos-
+    - img
+    - text: "7.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Love Island (Estados Unidos)"
+    - img
+    - heading "Love Island (Estados Unidos)" [level=3]
+    - paragraph: "2019"
+    - img
+  - link "Ver detalles de la serie Homes Under the Hammer":
+    - /url: /tv/8106-homes-under-the-hammer
+    - img
+    - text: "4.2"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Homes Under the Hammer"
+    - img
+    - heading "Homes Under the Hammer" [level=3]
+    - paragraph: "2003"
+    - img
+  - link "Ver detalles de la serie Binnelanders":
+    - /url: /tv/206559-binnelanders
+    - img
+    - text: "5.6"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de Binnelanders"
+    - img
+    - heading "Binnelanders" [level=3]
+    - paragraph: "2005"
+    - img
+  - link "Ver detalles de la serie TMZ Live":
+    - /url: /tv/276465-tmz-live
+    - img
+    - text: "2.0"
+    - button "Agregar a favoritos":
+      - img
+    - img "Póster de TMZ Live"
+    - img
+    - heading "TMZ Live" [level=3]
+    - paragraph: "2012"
+    - img
+  - heading "API Test" [level=2]
+  - button "Test API Key"
+  - button "Test Popular Movies"
+  - button "Test Genres"
+- contentinfo:
+  - heading "Explorar" [level=3]:
+    - img
+    - text: Explorar
+  - list:
+    - listitem:
+      - link "Películas":
+        - /url: /movies
+        - img
+        - text: Películas
+    - listitem:
+      - link "Series TV":
+        - /url: /tv
+        - img
+        - text: Series TV
+    - listitem:
+      - link "Personas":
+        - /url: /people
+        - img
+        - text: Personas
+    - listitem:
+      - link "Búsqueda":
+        - /url: /search
+        - img
+        - text: Búsqueda
+  - heading "Categorías" [level=3]:
+    - img
+    - text: Categorías
+  - list:
+    - listitem:
+      - link "Populares":
+        - /url: /movies
+        - img
+        - text: Populares
+    - listitem:
+      - link "Mejor Valoradas":
+        - /url: /movies
+        - img
+        - text: Mejor Valoradas
+    - listitem:
+      - link "Próximamente":
+        - /url: /movies
+        - img
+        - text: Próximamente
+    - listitem:
+      - link "En Cines":
+        - /url: /movies
+        - img
+        - text: En Cines
+  - heading "Favoritos" [level=3]:
+    - img
+    - text: Favoritos
+  - list:
+    - listitem:
+      - link "Mis Películas":
+        - /url: /favorites
+        - img
+        - text: Mis Películas
+    - listitem:
+      - link "Mis Series":
+        - /url: /favorites/tv
+        - img
+        - text: Mis Series
+    - listitem:
+      - link "Mis Personas":
+        - /url: /favorites/people
+        - img
+        - text: Mis Personas
+  - heading "Conecta" [level=3]:
+    - img
+    - text: Conecta
+  - link "GitHub":
+    - /url: https://github.com
+    - img
+    - text: GitHub
+  - link "Twitter":
+    - /url: https://twitter.com
+    - img
+    - text: Twitter
+  - link "Instagram":
+    - /url: https://instagram.com
+    - img
+    - text: Instagram
+  - link "Contacto":
+    - /url: mailto:contact@cinegemini.com
+    - img
+    - text: Contacto
+  - paragraph: © 2025 CineGemini. Todos los derechos reservados.
+  - paragraph: Desarrollado con ❤️ usando Next.js y React
+  - link "Privacidad":
+    - /url: /privacy
+  - link "Términos":
+    - /url: /terms
+  - link "Acerca de":
+    - /url: /about
+  - link "Powered by TMDB":
+    - /url: https://www.themoviedb.org/
+    - text: Powered by TMDB
+    - img
+  - text: Sistema Activo
+```

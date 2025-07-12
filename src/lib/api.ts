@@ -2,6 +2,11 @@ import { MoviesResponse, Movie, CreditsResponse, VideosResponse } from "@/types"
 import { config, getApiKey, getImageUrl } from "./config";
 import { movieCache, genreCache, personCache, searchCache } from "./cache";
 
+// Función utilitaria para validar números de página
+const validatePage = (page: number): number => {
+  return Math.max(1, Math.min(500, Math.floor(Number(page)) || 1));
+};
+
 // Función para construir URLs con parámetros
 const buildUrl = (endpoint: string, params: Record<string, any> = {}) => {
   const apiKey = getApiKey();
@@ -114,22 +119,22 @@ const fetchFromAPI = async (endpoint: string, params: Record<string, any> = {}, 
 
 // Películas populares
 export const getPopularMovies = async (page: number = 1) => {
-  return fetchFromAPI('/movie/popular', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/movie/popular', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Películas en cartelera
 export const getNowPlayingMovies = async (page: number = 1) => {
-  return fetchFromAPI('/movie/now_playing', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/movie/now_playing', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Películas mejor valoradas
 export const getTopRatedMovies = async (page: number = 1) => {
-  return fetchFromAPI('/movie/top_rated', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/movie/top_rated', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Películas próximas
 export const getUpcomingMovies = async (page: number = 1) => {
-  return fetchFromAPI('/movie/upcoming', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/movie/upcoming', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Detalles de una película
@@ -152,19 +157,19 @@ export const getMovieVideos = async (movieId: string) => {
 
 // Películas similares
 export const getSimilarMovies = async (movieId: string, page: number = 1) => {
-  return fetchFromAPI(`/movie/${movieId}/similar`, { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI(`/movie/${movieId}/similar`, { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Películas recomendadas
 export const getRecommendedMovies = async (movieId: string, page: number = 1) => {
-  return fetchFromAPI(`/movie/${movieId}/recommendations`, { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI(`/movie/${movieId}/recommendations`, { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Búsqueda de películas
 export const searchMovies = async (query: string, page: number = 1) => {
   return fetchFromAPI('/search/movie', { 
     query, 
-    page, 
+    page: validatePage(page), 
     language: config.ui.defaultLanguage,
     include_adult: false
   }, searchCache);
@@ -174,7 +179,7 @@ export const searchMovies = async (query: string, page: number = 1) => {
 export const searchPeople = async (query: string, page: number = 1) => {
   return fetchFromAPI('/search/person', { 
     query, 
-    page, 
+    page: validatePage(page), 
     language: config.ui.defaultLanguage,
     include_adult: false
   }, searchCache);
@@ -202,7 +207,7 @@ export const getPersonImages = async (personId: string) => {
 export const getMoviesByGenre = async (genreId: string, page: number = 1) => {
   return fetchFromAPI('/discover/movie', { 
     with_genres: genreId,
-    page,
+    page: validatePage(page),
     language: config.ui.defaultLanguage,
     sort_by: 'popularity.desc'
   }, genreCache);
@@ -215,7 +220,7 @@ export const getMovieGenres = async () => {
 
 // Personas populares
 export const getPopularPeople = async (page: number = 1) => {
-  return fetchFromAPI('/person/popular', { page, language: config.ui.defaultLanguage }, personCache);
+  return fetchFromAPI('/person/popular', { page: validatePage(page), language: config.ui.defaultLanguage }, personCache);
 };
 
 // Configuración de la API (para imágenes)
@@ -237,22 +242,22 @@ export const verifyAPIKey = async () => {
 
 // Series populares
 export const getPopularTVShows = async (page: number = 1) => {
-  return fetchFromAPI('/tv/popular', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/tv/popular', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Series mejor valoradas
 export const getTopRatedTVShows = async (page: number = 1) => {
-  return fetchFromAPI('/tv/top_rated', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/tv/top_rated', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Series en emisión
 export const getOnAirTVShows = async (page: number = 1) => {
-  return fetchFromAPI('/tv/on_the_air', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/tv/on_the_air', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Series que se emiten hoy
 export const getAiringTodayTVShows = async (page: number = 1) => {
-  return fetchFromAPI('/tv/airing_today', { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI('/tv/airing_today', { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Detalles de una serie de TV
@@ -275,19 +280,19 @@ export const getTVShowVideos = async (tvId: string) => {
 
 // Series similares
 export const getSimilarTVShows = async (tvId: string, page: number = 1) => {
-  return fetchFromAPI(`/tv/${tvId}/similar`, { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI(`/tv/${tvId}/similar`, { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Series recomendadas
 export const getRecommendedTVShows = async (tvId: string, page: number = 1) => {
-  return fetchFromAPI(`/tv/${tvId}/recommendations`, { page, language: config.ui.defaultLanguage }, movieCache);
+  return fetchFromAPI(`/tv/${tvId}/recommendations`, { page: validatePage(page), language: config.ui.defaultLanguage }, movieCache);
 };
 
 // Series por género
 export const getTVShowsByGenre = async (genreId: string, page: number = 1) => {
   return fetchFromAPI('/discover/tv', { 
     with_genres: genreId,
-    page,
+    page: validatePage(page),
     language: config.ui.defaultLanguage,
     sort_by: 'popularity.desc'
   }, genreCache);
@@ -302,7 +307,7 @@ export const getTVGenres = async () => {
 export const searchTVShows = async (query: string, page: number = 1) => {
   return fetchFromAPI('/search/tv', { 
     query, 
-    page, 
+    page: validatePage(page), 
     language: config.ui.defaultLanguage,
     include_adult: false
   }, searchCache);

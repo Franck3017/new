@@ -23,8 +23,8 @@ const PersonCard = ({ person, viewMode = 'grid' }: PersonCardProps) => {
 
   // Generar URL con formato id-name
   const getPersonUrl = () => {
-    const nameSlug = person.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return `/person/${person.id}-${encodeURIComponent(nameSlug)}`;
+    const nameSlug = person.name.toLowerCase().replace(/\s+/g, '-').replace(/[^0-9A-Za-z\u00C0-\u017F\-._~!$&'()*+,;=:@]+/g, '') ;
+    return `/persona/${person.id}-${encodeURIComponent(nameSlug)}`;
   };
 
   const handleFavoriteToggle = (e: React.MouseEvent) => {

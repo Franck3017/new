@@ -21,9 +21,11 @@ const SearchBar = () => {
 
   // Cargar historial desde localStorage
   useEffect(() => {
-    const savedHistory = localStorage.getItem('searchHistory');
-    if (savedHistory) {
-      setSearchHistory(JSON.parse(savedHistory));
+    if (typeof window !== 'undefined') {
+      const savedHistory = localStorage.getItem('searchHistory');
+      if (savedHistory) {
+        setSearchHistory(JSON.parse(savedHistory));
+      }
     }
   }, []);
 
@@ -42,7 +44,9 @@ const SearchBar = () => {
   const updateHistory = useCallback((newQuery: string) => {
     setSearchHistory(prevHistory => {
       const newHistory = [newQuery, ...prevHistory.filter(item => item !== newQuery)].slice(0, 5);
-      localStorage.setItem('searchHistory', JSON.stringify(newHistory));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('searchHistory', JSON.stringify(newHistory));
+      }
       return newHistory;
     });
   }, []);
@@ -87,7 +91,9 @@ const SearchBar = () => {
 
   const clearHistory = useCallback(() => {
     setSearchHistory([]);
-    localStorage.removeItem('searchHistory');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('searchHistory');
+    }
   }, []);
 
   return (

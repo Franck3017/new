@@ -6,6 +6,14 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 import { useFavorites } from '@/context/FavoritesContext';
 import { FiSun, FiMoon, FiHeart, FiMenu, FiX, FiSearch, FiUser, FiTv, FiFilm } from 'react-icons/fi';
+import { ROUTES } from '@/utils/urlHelpers';
+import {  
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton, 
+} from '@clerk/nextjs';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -14,10 +22,38 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: '/movies', label: 'Películas', icon: FiFilm },
-    { href: '/tv', label: 'Series', icon: FiTv },
-    { href: '/people', label: 'Personas', icon: FiUser },
-    { href: '/search', label: 'Buscar', icon: FiSearch },
+    { 
+      href: ROUTES.MOVIES, 
+      label: 'Películas', 
+      icon: FiFilm,
+      color: 'text-blue-400',
+      bgColor: 'bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 border-b border-gray-700/50',
+      description: 'Descubre las mejores películas'
+    },
+    { 
+      href: ROUTES.TV, 
+      label: 'Series', 
+      icon: FiTv,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/20',
+      description: 'Las series más populares'
+    },
+    { 
+      href: ROUTES.PEOPLE, 
+      label: 'Personas', 
+      icon: FiUser,
+      color: 'text-green-400',
+      bgColor: 'bg-green-500/20',
+      description: 'Actores y actrices'
+    },
+    { 
+      href: ROUTES.SEARCH, 
+      label: 'Buscar', 
+      icon: FiSearch,
+      color: 'text-yellow-400',
+      bgColor: 'bg-yellow-500/20',
+      description: 'Búsqueda avanzada'
+    },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -27,35 +63,41 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href={ROUTES.HOME} className="flex items-center gap-2 group">
             <div className="relative">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-200">
                 C
               </div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
             </div>
-            <span className="text-white text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               CineGemini
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                  className={`group relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'text-white bg-blue-500/20 border border-blue-500/30'
+                      ? `${item.bgColor} ${item.color} border border-gray-600/50 shadow-lg`
                       : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
+                  <Icon className={`h-4 w-4 ${isActive(item.href) ? item.color : ''}`} />
+                  <span className="font-medium">{item.label}</span>
+                  
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900/95 backdrop-blur-sm text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                    {item.description}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+                  </div>
                 </Link>
               );
             })}
@@ -78,7 +120,7 @@ const Navbar = () => {
               <div className="absolute top-full right-0 mt-1 w-48 bg-gray-800/95 backdrop-blur-sm border border-gray-700/50 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="py-2">
                   <Link
-                    href="/favorites"
+                    href={ROUTES.FAVORITES_MOVIES}
                     className="flex items-center justify-between px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200"
                   >
                     <span>Películas</span>
@@ -87,7 +129,7 @@ const Navbar = () => {
                     </span>
                   </Link>
                   <Link
-                    href="/favorites/tv"
+                    href={ROUTES.FAVORITES_TV}
                     className="flex items-center justify-between px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200"
                   >
                     <span>Series TV</span>
@@ -96,7 +138,7 @@ const Navbar = () => {
                     </span>
                   </Link>
                   <Link
-                    href="/favorites/people"
+                    href={ROUTES.FAVORITES_PEOPLE}
                     className="flex items-center justify-between px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200"
                   >
                     <span>Personas</span>
@@ -118,12 +160,14 @@ const Navbar = () => {
             </button>
 
             {/* User Menu */}
-            <button
-              className="p-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200 focus-ring"
-              aria-label="Menú de usuario"
-            >
-              <FiUser className="h-5 w-5" />
-            </button>
+            <SignedOut>
+              <SignUpButton mode="modal">
+                  <FiUser className="h-5 w-5 cursor-pointer" />
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
 
           {/* Mobile Menu Button */}
@@ -164,7 +208,7 @@ const Navbar = () => {
               <div className="space-y-2 px-4 py-3">
                 <div className="text-sm text-gray-400 px-4 py-2">Favoritos</div>
                 <Link
-                  href="/favorites"
+                  href={ROUTES.FAVORITES}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center justify-between px-4 py-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200"
                 >
@@ -174,7 +218,7 @@ const Navbar = () => {
                   </span>
                 </Link>
                 <Link
-                  href="/favorites/tv"
+                  href={ROUTES.FAVORITES}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center justify-between px-4 py-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200"
                 >
@@ -184,7 +228,7 @@ const Navbar = () => {
                   </span>
                 </Link>
                 <Link
-                  href="/favorites/people"
+                  href={ROUTES.FAVORITES}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center justify-between px-4 py-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200"
                 >

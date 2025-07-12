@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams, usePathname } from 'next/navigation';
 import { getMoviesByGenre, getTVShowsByGenre } from '@/lib/api';
 import { MOVIE_GENRES, TV_GENRES, getGenreName } from '@/constants/genres';
 import { Movie } from '@/types';
@@ -15,7 +15,7 @@ export default function GenrePage() {
   const searchParams = useSearchParams();
   const genreId = params.id as string;
   const mediaType = searchParams.get('type') || 'movie'; // 'movie' o 'tv'
-  
+  const pathname = usePathname();
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -151,7 +151,7 @@ export default function GenrePage() {
           <h1 className="text-2xl font-bold mb-4">Género no encontrado</h1>
           <p className="text-gray-400 mb-6">El género solicitado no existe.</p>
           <Link
-            href={mediaType === 'tv' ? '/tv' : '/'}
+            href={mediaType === 'tv' ? '/series' : '/'}
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
           >
             Volver al inicio
@@ -162,7 +162,7 @@ export default function GenrePage() {
   }
 
   const mediaTypeLabel = mediaType === 'tv' ? 'programas de TV' : 'películas';
-  const mediaTypeIcon = mediaType === 'tv' ? FiTv : FiFilm;
+  const mediaTypeIcon = mediaType === 'tv' ? <FiTv className="w-5 h-5" /> : <FiFilm className="w-5 h-5" />;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -176,6 +176,7 @@ export default function GenrePage() {
         >
           <div className={`absolute inset-0 bg-gradient-to-r ${genreColor} opacity-80`}></div>
         </div>
+        
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-10 flex items-end gap-6">
           {GenreIcon && (
             <div className="hidden md:flex items-center justify-center w-32 h-32 rounded-full bg-white/20 shadow-lg backdrop-blur-lg">
@@ -187,9 +188,9 @@ export default function GenrePage() {
               {GenreIcon && <GenreIcon className="inline-block w-8 h-8 md:hidden" />} {genreName}
             </h1>
             <p className="text-blue-100 text-lg max-w-xl drop-shadow flex items-center gap-2">
-              <span>Descubre los mejores {mediaTypeLabel} de</span>
+              <span>Descubre las mejores {mediaTypeLabel} de</span>
               <span className="font-semibold">{genreName.toLowerCase()}</span>
-              {mediaType === 'tv' && <FiTv className="w-5 h-5" />}
+              {mediaTypeIcon}
             </p>
           </div>
         </div>

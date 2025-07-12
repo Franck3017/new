@@ -32,7 +32,7 @@ export function useOptimizedAPI<T>(
     lastUpdated: null
   });
 
-  const debounceRef = useRef<NodeJS.Timeout>();
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
   const throttleRef = useRef<{ lastCall: number; pending: boolean }>({ lastCall: 0, pending: false });
   const retryCountRef = useRef(0);
   const abortControllerRef = useRef<AbortController | null>(null);

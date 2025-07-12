@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FiImage, FiHeart, FiPlay, FiStar, FiTv } from 'react-icons/fi';
 import { useFavorites } from '@/context/FavoritesContext';
+import { generateMovieUrl, generateTVUrl, generatePersonUrl } from '@/utils/urlHelpers';
 
 interface Credit {
   id: number;
@@ -63,7 +64,12 @@ const CreditCard = ({ credit }: CreditCardProps) => {
       popularity: credit.popularity,
       genres: [],
       runtime: 0,
-      media_type: credit.media_type as 'movie' | 'tv'
+      media_type: credit.media_type as 'movie' | 'tv',
+      homepage: '',
+      production_companies: [],
+      production_countries: [],
+      spoken_languages: [],
+      status: 'Released'
     };
     
     if (isTV) {
@@ -86,10 +92,9 @@ const CreditCard = ({ credit }: CreditCardProps) => {
   };
 
   const getMediaUrl = () => {
-    // Verificar que el título existe antes de procesarlo
-    const title = credit.title || credit.name || (credit.media_type === 'tv' ? 'serie' : 'pelicula');
-    const titleSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return `/${credit.media_type}/${credit.id}-${encodeURIComponent(titleSlug)}`;
+    return credit.media_type === 'movie' 
+      ? generateMovieUrl(credit.id, credit.title || '')
+      : generateTVUrl(credit.id, credit.name || '');
   };
 
   const getTitle = () => {

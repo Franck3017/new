@@ -23,7 +23,7 @@ class APICache {
       ...config
     };
 
-    if (this.config.enablePersistence) {
+    if (this.config.enablePersistence && typeof window !== 'undefined') {
       this.loadFromStorage();
     }
   }
@@ -109,33 +109,39 @@ class APICache {
   clear(): void {
     this.cache.clear();
     if (this.config.enablePersistence) {
-      localStorage.removeItem('tmdb_cache');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('tmdb_cache');
+      }
     }
   }
 
   // Guardar en localStorage
   private saveToStorage(): void {
-    try {
-      const data = Array.from(this.cache.entries());
-      localStorage.setItem('tmdb_cache', JSON.stringify(data));
-    } catch (error) {
-      console.warn('No se pudo guardar el cache en localStorage:', error);
+    if (typeof window !== 'undefined') {
+      try {
+        const data = Array.from(this.cache.entries());
+        localStorage.setItem('tmdb_cache', JSON.stringify(data));
+      } catch (error) {
+        console.warn('No se pudo guardar el cache en localStorage:', error);
+      }
     }
   }
 
   // Cargar desde localStorage
   private loadFromStorage(): void {
-    try {
-      const stored = localStorage.getItem('tmdb_cache');
-      if (stored) {
-        const data = JSON.parse(stored);
-        this.cache = new Map(data);
-        
-        // Limpiar entradas expiradas al cargar
-        this.clearExpired();
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('tmdb_cache');
+        if (stored) {
+          const data = JSON.parse(stored);
+          this.cache = new Map(data);
+          
+          // Limpiar entradas expiradas al cargar
+          this.clearExpired();
+        }
+      } catch (error) {
+        console.warn('No se pudo cargar el cache desde localStorage:', error);
       }
-    } catch (error) {
-      console.warn('No se pudo cargar el cache desde localStorage:', error);
     }
   }
 

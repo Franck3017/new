@@ -6,6 +6,7 @@ import { useState, memo, useMemo, useCallback } from 'react';
 import { Movie } from '@/types';
 import { FiImage, FiHeart, FiPlay, FiStar } from 'react-icons/fi';
 import { useFavorites } from '@/context/FavoritesContext';
+import { generateMovieUrl, generateTVUrl } from '@/utils/urlHelpers';
 
 interface MovieCardProps {
   movie: Movie;
@@ -16,8 +17,6 @@ interface MovieCardProps {
 const MovieCard = memo(({ movie, viewMode = 'grid', mediaType = 'movie' }: MovieCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const { 
-    favoriteMovies, 
-    favoriteTV,
     addMovieToFavorites, 
     addTVToFavorites,
     removeMovieFromFavorites,
@@ -54,9 +53,10 @@ const MovieCard = memo(({ movie, viewMode = 'grid', mediaType = 'movie' }: Movie
   
   // Memoizar URL
   const mediaUrl = useMemo(() => {
-    const titleSlug = displayTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return `/${actualMediaType}/${movie.id}-${encodeURIComponent(titleSlug)}`;
-  }, [movie.id, displayTitle, actualMediaType]);
+    return isTV
+      ? generateTVUrl(movie.id, displayTitle)
+      : generateMovieUrl(movie.id, displayTitle);
+  }, [isTV, movie.id, displayTitle]);
 
   const handleFavoriteClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -78,7 +78,7 @@ const MovieCard = memo(({ movie, viewMode = 'grid', mediaType = 'movie' }: Movie
   }, [isTV, isFavorite, removeTVFromFavorites, addTVToFavorites, removeMovieFromFavorites, addMovieToFavorites, movie]);
 
   return (
-    <Link href={mediaUrl} className={`group block ${viewMode === 'list' ? 'flex' : ''}`} aria-label={`Ver detalles de ${actualMediaType === 'tv' ? 'la serie' : 'la película'} ${displayTitle}`}>
+    <Link href={mediaUrl} className={`group block h-full w-full rounded-lg overflow-hidden ${viewMode === 'list' ? 'flex' : ''}`} aria-label={`Ver detalles de ${actualMediaType === 'tv' ? 'la serie' : 'la película'} ${displayTitle}`}>
       <div className={`relative bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 ease-out ${
         viewMode === 'grid' 
           ? 'hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20' 
@@ -96,7 +96,7 @@ const MovieCard = memo(({ movie, viewMode = 'grid', mediaType = 'movie' }: Movie
         {viewMode === 'grid' && (
           <button
             onClick={handleFavoriteClick}
-            className="absolute top-2 left-2 z-20 p-2 rounded-full bg-gray-900/90 backdrop-blur-sm text-gray-300 hover:text-red-500 transition-colors duration-200"
+            className="absolute top-2 left-2 z-20 p-2 rounded-full bg-gray-900/90 backdrop-blur-sm text-gray-300 hover:text-red-500 transition-colors duration-200 cursor-pointer"
             aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
           >
             <FiHeart className={`h-4 w-4 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
@@ -169,7 +169,7 @@ const MovieCard = memo(({ movie, viewMode = 'grid', mediaType = 'movie' }: Movie
                 </div>
                 <button
                   onClick={handleFavoriteClick}
-                  className="p-2 rounded-full bg-gray-700/50 text-gray-300 hover:text-red-500 transition-colors duration-200"
+                  className="p-2 rounded-full cursor-pointer bg-gray-700/50 text-gray-300 hover:text-red-500 transition-colors duration-200"
                   aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
                 >
                   <FiHeart className={`h-4 w-4 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />

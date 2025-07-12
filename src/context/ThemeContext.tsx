@@ -15,16 +15,20 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
     }
   }, []);
 
   useEffect(() => {
     if (mounted) {
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', theme);
+      }
     }
   }, [theme, mounted]);
 

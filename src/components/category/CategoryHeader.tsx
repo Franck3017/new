@@ -18,8 +18,8 @@ export const CategoryHeader = ({
   filteredCount
 }: CategoryHeaderProps) => {
   return (
-    <div className={`bg-gradient-to-r ${color} py-16 px-4 sm:px-6 lg:px-8`}>
-      <div className="max-w-7xl mx-auto">
+    <div className={`bg-gradient-to-r ${color} py-16`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-4">
           {icon}
           <h1 className="text-4xl font-bold">{title}</h1>

@@ -16,31 +16,31 @@ import {
   FiTrendingUp,
   FiPlay,
   FiCalendar,
-  FiAward,
   FiZap
 } from 'react-icons/fi';
+import { ROUTES } from '@/utils/urlHelpers';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Películas', href: '/movies', icon: FiFilm },
-    { name: 'Series TV', href: '/tv', icon: FiTv },
-    { name: 'Personas', href: '/people', icon: FiUser },
-    { name: 'Búsqueda', href: '/search', icon: FiSearch },
+    { name: 'Películas', href: ROUTES.MOVIES, icon: FiFilm },
+    { name: 'Series TV', href: ROUTES.TV, icon: FiTv },
+    { name: 'Personas', href: ROUTES.PEOPLE, icon: FiUser },
+    { name: 'Búsqueda', href: ROUTES.SEARCH, icon: FiSearch },
   ];
 
   const categories = [
-    { name: 'Populares', href: '/movies', icon: FiTrendingUp },
-    { name: 'Mejor Valoradas', href: '/movies', icon: FiStar },
-    { name: 'Próximamente', href: '/movies', icon: FiCalendar },
-    { name: 'En Cines', href: '/movies', icon: FiPlay },
+    { name: 'Populares', href: ROUTES.MOVIES, icon: FiTrendingUp },
+    { name: 'Mejor Valoradas', href: ROUTES.MOVIES, icon: FiStar },
+    { name: 'Próximamente', href: ROUTES.MOVIES, icon: FiCalendar },
+    { name: 'En Cines', href: ROUTES.MOVIES, icon: FiPlay },
   ];
 
   const favorites = [
-    { name: 'Mis Películas', href: '/favorites', icon: FiHeart },
-    { name: 'Mis Series', href: '/favorites/tv', icon: FiTv },
-    { name: 'Mis Personas', href: '/favorites/people', icon: FiUser },
+    { name: 'Mis Películas', href: ROUTES.FAVORITES_MOVIES, icon: FiHeart },
+    { name: 'Mis Series', href: ROUTES.FAVORITES_TV, icon: FiTv },
+    { name: 'Mis Personas', href: ROUTES.FAVORITES_PEOPLE, icon: FiUser },
   ];
 
   const socialLinks = [
@@ -170,19 +170,19 @@ export default function Footer() {
             {/* Enlaces legales */}
             <div className="flex items-center gap-6 text-sm">
               <Link
-                href="/privacy"
+                href={ROUTES.PRIVACY}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Privacidad
               </Link>
               <Link
-                href="/terms"
+                href={ROUTES.TERMS}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Términos
               </Link>
               <Link
-                href="/about"
+                href={ROUTES.ABOUT}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Acerca de

@@ -1,16 +1,16 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { 
-  FiSearch, FiPlay, FiStar, FiHeart,
-  FiEye, FiShare2, FiBookmark, FiX, FiVolume2, FiVolumeX
+  FiSearch, FiPlay, FiStar, FiHeart, FiShare2, FiVolume2, FiVolumeX
 } from 'react-icons/fi';
 import { getPopularMovies, getTopRatedMovies, getNowPlayingMovies, searchMovies } from '@/lib/api';
 import { Movie } from '@/types';
 import { useFavorites } from '@/context/FavoritesContext';
-import { useNotifications, NotificationContainer } from '@/components/Notification';
+import { useNotifications } from '@/components/Notification';
 import Link from 'next/link';
+import { generateMovieUrl } from '@/utils/urlHelpers';
 
 interface HeroSectionProps {
   onMovieSelect?: (movie: Movie) => void;
@@ -52,19 +52,20 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
     removeMovieFromFavorites,
     removeTVFromFavorites
   } = useFavorites();
-  const { showSuccess, showError } = useNotifications();
+  const { showSuccess, showError, notifications } = useNotifications();
 
   // Cargar datos
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const [popular, topRated] = await Promise.all([
+        const [popular, topRated, nowPlaying] = await Promise.all([
           getPopularMovies(1),
-          getTopRatedMovies(1)
+          getTopRatedMovies(1),
+          getNowPlayingMovies(1)
         ]);
         
-        setFeaturedMovies([...popular.results.slice(0, 3), ...topRated.results.slice(0, 2)]);
+        setFeaturedMovies([...popular.results.slice(0, 3), ...topRated.results.slice(0, 2), ...nowPlaying.results.slice(0, 2)]);
         
       } catch (error) {
         console.error('Error fetching movies:', error);
@@ -293,10 +294,6 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
     showSuccess('Añadido a Watchlist', `${movie.title} se agregó a tu lista de pendientes`);
   };
 
-  const clearSearchHistory = () => {
-    setSearchHistory([]);
-    showSuccess('Historial limpiado', 'Se ha limpiado tu historial de búsqueda');
-  };
 
   const currentMovie = featuredMovies[currentSlide];
 
@@ -323,7 +320,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
 
   return (
     <>
-      <section className="relative min-h-screen flex justify-center overflow-hidden bg-gray-900">
+      <section className="relative min-h-screen flex justify-center bg-gray-900 -mt-4" role="banner" aria-label="Sección principal">
         {/* Fondo con patrón sutil */}
         <div className="absolute inset-0 bg-gray-900">
           <div className="absolute inset-0 bg-gray-800/10"></div>
@@ -336,10 +333,10 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
         </div>
 
         {/* Contenido principal */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 xl:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-            {/* Contenido izquierdo */}
-            <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 xl:py-24 overflow-visible">
+                      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center overflow-visible">
+                          {/* Contenido izquierdo */}
+              <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 overflow-visible">
               {/* Título principal */}
               <div className="space-y-4 sm:space-y-6">
                 <div className="relative">
@@ -360,13 +357,13 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
               </div>
 
               {/* Búsqueda inteligente avanzada */}
-              <div className="max-w-lg mx-auto lg:mx-0" ref={searchRef}>
+              <div className="max-w-lg mx-auto lg:mx-0 relative z-[9998]" ref={searchRef}>
                 <form 
                   onSubmit={(e) => {
                     e.preventDefault();
                     handleSearch(searchQuery);
                   }}
-                  className="relative group"
+                  className="relative group w-full"
                 >
                   <div className={`relative transition-all duration-300 ${showSuggestions ? 'scale-102' : ''}`}>
                     <div className="relative">
@@ -376,6 +373,8 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onFocus={() => setShowSuggestions(true)}
+                        aria-label="Buscar contenido"
+                        aria-describedby="search-help"
                         className="w-full px-6 py-4 sm:py-5 bg-gray-800/40 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-800/60 transition-all duration-300 text-base sm:text-lg shadow-lg pr-16"
                       />
                       <button
@@ -393,7 +392,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
 
                   {/* Sugerencias inteligentes mejoradas */}
                   {showSuggestions && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-gray-800/95 backdrop-blur-sm border border-gray-700/50 rounded-xl shadow-xl z-50 max-h-96 overflow-y-auto">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-gray-800/95 backdrop-blur-sm border border-gray-700/50 rounded-xl shadow-xl z-[9999] max-h-96 overflow-y-auto transform translate-y-0 w-full">
                       {/* Resultados de películas en tiempo real */}
                       {searchResults.length > 0 && (
                         <div>
@@ -404,7 +403,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                           {searchResults.map((movie, index) => (
                             <Link
                               key={movie.id}
-                              href={`/movie/${movie.id}-${encodeURIComponent(movie.title?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') || '')}`}
+                              href={generateMovieUrl(movie.id, movie.title || '')}
                               className={`w-full px-4 py-3 text-left text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200 flex items-center gap-3 ${
                                 index === selectedSuggestion ? 'bg-gray-700/50 text-white' : ''
                               }`}
@@ -434,7 +433,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                       )}
 
                       {/* Ayuda */}
-                      <div className="p-3 border-t border-gray-700/50">
+                      <div className="p-3 border-t border-gray-700/50" id="search-help" aria-describedby="search-help">
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <span>↑↓ Navegar • Enter Seleccionar</span>
                           <span>ESC Cerrar</span>
@@ -454,9 +453,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                   {/* Película destacada */}
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-700 group-hover:scale-105">
                     <Image
-                      src={currentMovie.backdrop_path ? `https://image.tmdb.org/t/p/w500${currentMovie.backdrop_path}` : 
-                           currentMovie.poster_path ? `https://image.tmdb.org/t/p/w500${currentMovie.poster_path}` : 
-                           '/placeholder-movie.webp'}
+                      src={currentMovie.backdrop_path ? `https://image.tmdb.org/t/p/w1280${currentMovie.backdrop_path}` :  '/placeholder-movie.webp'}
                       alt={currentMovie.title || 'Película'}
                       width={600}
                       height={400}
@@ -493,7 +490,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                       
                       <div className="flex items-center gap-3 sm:gap-4">
                         <Link
-                          href={`/movie/${currentMovie.id}-${encodeURIComponent(currentMovie.title?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') || '')}`}
+                          href={generateMovieUrl(currentMovie.id, currentMovie.title || '')}
                           className="flex items-center gap-2 sm:gap-3 bg-gray-800/20 backdrop-blur-sm hover:bg-gray-800/30 text-white px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base font-semibold border border-gray-700/50"
                         >
                           <FiPlay className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -548,6 +545,7 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
                 </div>
               )}
             </div>
+
           </div>
 
           {/* Indicador de scroll */}
@@ -556,80 +554,10 @@ export default function HeroSection({ onMovieSelect }: HeroSectionProps) {
               <div className="w-1 h-3 sm:h-4 bg-gray-400 rounded-full mt-2 sm:mt-3 animate-pulse"></div>
             </div>
           </div>
+          
+          {/* Gradiente de transición hacia el contenido siguiente */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
         </div>
-
-        {/* Vista rápida modal */}
-        {showQuickView && quickViewMovie && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div 
-              ref={quickViewRef}
-              className="bg-gray-800/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-700/50"
-            >
-              <div className="flex items-start justify-between mb-6">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">{quickViewMovie.title}</h2>
-                <button
-                  onClick={() => setShowQuickView(false)}
-                  className="p-2 bg-gray-700/50 hover:bg-gray-600/50 text-white rounded-xl transition-all duration-300"
-                >
-                  <FiX className="h-5 w-5" />
-                </button>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="sm:col-span-1">
-                  <div className="relative aspect-[2/3] rounded-2xl overflow-hidden">
-                    <Image
-                      src={quickViewMovie.poster_path ? `https://image.tmdb.org/t/p/w500${quickViewMovie.poster_path}` : '/placeholder-movie.webp'}
-                      alt={quickViewMovie.title || 'Película'}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                
-                <div className="sm:col-span-2 space-y-4">
-                  <p className="text-gray-300 leading-relaxed">{quickViewMovie.overview}</p>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 bg-yellow-500/20 px-3 py-2 rounded-xl">
-                      <FiStar className="h-4 w-4 text-yellow-400" />
-                      <span className="text-white font-bold">{quickViewMovie.vote_average?.toFixed(1)}</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-2 rounded-xl">
-                      <FiEye className="h-4 w-4 text-blue-400" />
-                      <span className="text-white">{quickViewMovie.popularity?.toFixed(0)}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl transition-all duration-300">
-                      <FiPlay className="h-4 w-4" />
-                      Ver Ahora {quickViewMovie.title}
-                    </button>
-                    <button 
-                      onClick={() => handleFavoriteClick(quickViewMovie)}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
-                        isMovieFavorite(quickViewMovie.id)
-                          ? 'bg-red-500 hover:bg-red-600 text-white'
-                          : 'bg-gray-700 hover:bg-gray-600 text-white'
-                      }`}
-                    >
-                      <FiHeart className={`h-4 w-4 ${isMovieFavorite(quickViewMovie.id) ? 'fill-current' : ''}`} />
-                      {isMovieFavorite(quickViewMovie.id) ? 'En Favoritos' : 'Añadir a Favoritos'}
-                    </button>
-                    <button 
-                      onClick={() => handleAddToWatchlist(quickViewMovie)}
-                      className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-xl transition-all duration-300"
-                    >
-                      <FiBookmark className="h-4 w-4" />
-                      Watchlist
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
     </>
   );

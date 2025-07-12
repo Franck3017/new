@@ -4,6 +4,7 @@ import { CastMember } from "@/types";
 import Image from "next/image";
 import { FiUser, FiStar } from "react-icons/fi";
 import Link from "next/link";
+import { generatePersonUrl } from "@/utils/urlHelpers";
 
 interface CastMemberCardProps {
   member: CastMember;
@@ -14,14 +15,8 @@ export default function CastMemberCard({ member }: CastMemberCardProps) {
     ? `https://image.tmdb.org/t/p/w185${member.profile_path}`
     : null;
 
-  // Generar URL con formato id-name
-  const getPersonUrl = () => {
-    const nameSlug = member.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return `/person/${member.id}-${encodeURIComponent(nameSlug)}`;
-  };
-
   return (
-    <Link href={getPersonUrl()} className="block">
+    <Link href={generatePersonUrl(member.id, member.name)} className="block">
       <div className="group relative bg-gray-800/30 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 cursor-pointer min-w-[200px] flex-shrink-0 hover:scale-105">
         {/* Imagen de perfil */}
         <div className="relative aspect-[2/3] bg-gray-700 overflow-hidden">

@@ -1,0 +1,226 @@
+<testsuites id="" name="" tests="10" failures="4" skipped="0" errors="0" time="44.60698">
+<testsuite name="home.spec.ts" timestamp="2025-07-08T15:34:57.742Z" hostname="chromium" tests="2" failures="0" skipped="0" time="7.679" errors="0">
+<testcase name="Home page › debe mostrar el título y secciones principales" classname="home.spec.ts" time="3.76">
+</testcase>
+<testcase name="Home page › la navegación a Películas funciona" classname="home.spec.ts" time="3.919">
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2025-07-08T15:34:57.742Z" hostname="firefox" tests="2" failures="0" skipped="0" time="15.353" errors="0">
+<testcase name="Home page › debe mostrar el título y secciones principales" classname="home.spec.ts" time="6.822">
+</testcase>
+<testcase name="Home page › la navegación a Películas funciona" classname="home.spec.ts" time="8.531">
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2025-07-08T15:34:57.742Z" hostname="webkit" tests="2" failures="0" skipped="0" time="21.088" errors="0">
+<testcase name="Home page › debe mostrar el título y secciones principales" classname="home.spec.ts" time="7.001">
+</testcase>
+<testcase name="Home page › la navegación a Películas funciona" classname="home.spec.ts" time="14.087">
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2025-07-08T15:34:57.742Z" hostname="Mobile Chrome" tests="2" failures="2" skipped="0" time="38.176" errors="0">
+<testcase name="Home page › debe mostrar el título y secciones principales" classname="home.spec.ts" time="7.435">
+<failure message="home.spec.ts:16:7 debe mostrar el título y secciones principales" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:16:7 › Home page › debe mostrar el título y secciones principales ─
+
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+    Locator: locator('nav').locator('a[href="/movies"]')
+    Expected: visible
+    Received: hidden
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('nav').locator('a[href="/movies"]')
+        8 × locator resolved to <a href="/movies" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-gray-300 hover:text-white hover:bg-gray-800/50">…</a>
+          - unexpected value "hidden"
+
+
+      19 |     await ensureMenuOpen(navbar);
+      20 |
+    > 21 |     await expect(navbar.locator('a[href="/movies"]')).toBeVisible();
+         |                                                       ^
+      22 |     await expect(navbar.locator('a[href="/tv"]')).toBeVisible();
+      23 |     await expect(navbar.locator('a[href="/people"]')).toBeVisible();
+      24 |     await expect(navbar.locator('a[href="/search"]')).toBeVisible();
+        at C:\Users\Frances\Downloads\new\tests\e2e\home.spec.ts:21:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Home page › la navegación a Películas funciona" classname="home.spec.ts" time="30.741">
+<failure message="home.spec.ts:27:7 la navegación a Películas funciona" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › home.spec.ts:27:7 › Home page › la navegación a Películas funciona ─────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('nav').locator('a[href="/movies"]').first()
+        - locator resolved to <a href="/movies" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-gray-300 hover:text-white hover:bg-gray-800/50">…</a>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not visible
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not visible
+        - retrying click action
+          - waiting 100ms
+        52 × waiting for element to be visible, enabled and stable
+           - element is not visible
+         - retrying click action
+           - waiting 500ms
+
+
+      31 |
+      32 |     const moviesLink = navbar.locator('a[href="/movies"]').first();
+    > 33 |     await moviesLink.click();
+         |                      ^
+      34 |     await expect(page).toHaveURL(/movies/);
+      35 |
+      36 |     // Busca un heading visible que contenga "Películas"
+        at C:\Users\Frances\Downloads\new\tests\e2e\home.spec.ts:33:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="home.spec.ts" timestamp="2025-07-08T15:34:57.742Z" hostname="Mobile Safari" tests="2" failures="2" skipped="0" time="41.548" errors="0">
+<testcase name="Home page › debe mostrar el título y secciones principales" classname="home.spec.ts" time="9.657">
+<failure message="home.spec.ts:16:7 debe mostrar el título y secciones principales" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:16:7 › Home page › debe mostrar el título y secciones principales ─
+
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+    Locator: locator('nav').locator('a[href="/movies"]')
+    Expected: visible
+    Received: hidden
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('nav').locator('a[href="/movies"]')
+        5 × locator resolved to <a href="/movies" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-gray-300 hover:text-white hover:bg-gray-800/50">…</a>
+          - unexpected value "hidden"
+
+
+      19 |     await ensureMenuOpen(navbar);
+      20 |
+    > 21 |     await expect(navbar.locator('a[href="/movies"]')).toBeVisible();
+         |                                                       ^
+      22 |     await expect(navbar.locator('a[href="/tv"]')).toBeVisible();
+      23 |     await expect(navbar.locator('a[href="/people"]')).toBeVisible();
+      24 |     await expect(navbar.locator('a[href="/search"]')).toBeVisible();
+        at C:\Users\Frances\Downloads\new\tests\e2e\home.spec.ts:21:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\test-failed-1.png]]
+
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\video.webm]]
+
+[[ATTACHMENT|home-Home-page-debe-mostra-aac3c-ulo-y-secciones-principales-Mobile-Safari\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Home page › la navegación a Películas funciona" classname="home.spec.ts" time="31.891">
+<failure message="home.spec.ts:27:7 la navegación a Películas funciona" type="FAILURE">
+<![CDATA[  [Mobile Safari] › home.spec.ts:27:7 › Home page › la navegación a Películas funciona ─────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('nav').locator('a[href="/movies"]').first()
+        - locator resolved to <a href="/movies" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-gray-300 hover:text-white hover:bg-gray-800/50">…</a>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not visible
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not visible
+        - retrying click action
+          - waiting 100ms
+        10 × waiting for element to be visible, enabled and stable
+           - element is not visible
+         - retrying click action
+           - waiting 500ms
+
+
+      31 |
+      32 |     const moviesLink = navbar.locator('a[href="/movies"]').first();
+    > 33 |     await moviesLink.click();
+         |                      ^
+      34 |     await expect(page).toHaveURL(/movies/);
+      35 |
+      36 |     // Busca un heading visible que contenga "Películas"
+        at C:\Users\Frances\Downloads\new\tests\e2e\home.spec.ts:33:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\test-failed-1.png]]
+
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\video.webm]]
+
+[[ATTACHMENT|home-Home-page-la-navegación-a-Películas-funciona-Mobile-Safari\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

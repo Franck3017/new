@@ -5,7 +5,8 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
-
+import SmoothPageTransition from "@/components/SmoothPageTransition";
+import { ClerkProvider } from '@clerk/nextjs'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,17 +20,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={inter.className}>
-        <ErrorBoundary>
-          <ThemeProvider>
-            <FavoritesProvider>
-              <Navbar />
-              {children}
-            </FavoritesProvider>
-          </ThemeProvider>
-        </ErrorBoundary>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="es">
+        <body className={inter.className}>
+          <ErrorBoundary>
+            <ThemeProvider>
+              <FavoritesProvider>
+                <Navbar />
+                <SmoothPageTransition>{children}</SmoothPageTransition>
+              </FavoritesProvider>
+            </ThemeProvider>
+          </ErrorBoundary>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

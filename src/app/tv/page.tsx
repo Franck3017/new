@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 import { TV_GENRES } from '@/constants/genres';
 import { 
   getTVShowsByGenre, 
@@ -23,7 +24,7 @@ import {
   FiArrowLeft,
   FiChevronRight,
   FiSearch,
-  FiHeart
+  FiMapPin,
 } from 'react-icons/fi';
 import Link from 'next/link';
 
@@ -34,6 +35,7 @@ export default function TVPage() {
   const [loading, setLoading] = useState<Record<number, boolean>>({});
   const [initialLoading, setInitialLoading] = useState(true);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const pathname = usePathname();
 
   // Estados para funcionalidades premium
   const [searchQuery, setSearchQuery] = useState('');
@@ -231,7 +233,7 @@ export default function TVPage() {
   // Función para manejar favoritos (placeholder)
   const handleFavorites = () => {
     // Redirigir a la página de favoritos
-    window.location.href = '/favorites';
+            window.location.href = '/favoritos';
   };
 
   // Cache optimizado ya está manejado en lib/api.ts
@@ -364,7 +366,7 @@ export default function TVPage() {
           <div className="container mx-auto px-4 py-6 sm:py-8">
             {/* Navegación superior */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
-              <div className="flex items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-2">
                 <Link 
                   href="/"
                   className="group flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 bg-white/5 backdrop-blur-sm text-white rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10"
@@ -375,9 +377,10 @@ export default function TVPage() {
                 
                 {/* Breadcrumb premium */}
                 <div className="hidden sm:flex items-center gap-2 text-gray-400">
-                  <span className="text-sm">Inicio</span>
                   <FiChevronRight className="h-4 w-4" />
-                  <span className="text-white font-medium text-sm">Series TV</span>
+                  <span className="text-white font-medium text-sm capitalize">
+                    {pathname.split('/').pop()}
+                  </span>
                 </div>
               </div>
               
