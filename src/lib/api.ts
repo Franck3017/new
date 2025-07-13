@@ -166,12 +166,52 @@ export const getRecommendedMovies = async (movieId: string, page: number = 1) =>
 };
 
 // Búsqueda de películas
-export const searchMovies = async (query: string, page: number = 1) => {
-  return fetchFromAPI('/search/movie', { 
+export const searchMovies = async (query: string, page: number = 1, additionalParams: Record<string, any> = {}) => {
+  const params = {
     query, 
     page: validatePage(page), 
     language: config.ui.defaultLanguage,
-    include_adult: false
+    include_adult: false,
+    ...additionalParams
+  };
+  
+  return fetchFromAPI('/search/movie', params, searchCache);
+};
+
+// Búsqueda avanzada de películas con filtros
+export const searchMoviesAdvanced = async (
+  query: string, 
+  page: number = 1, 
+  filters: {
+    year?: string;
+    genre?: string;
+    rating?: string;
+    sortBy?: string;
+    includeAdult?: boolean;
+  } = {}
+) => {
+  const params: Record<string, any> = {
+    page: validatePage(page),
+    language: config.ui.defaultLanguage,
+    include_adult: filters.includeAdult || false
+  };
+
+  // Agregar filtros si están presentes
+  if (filters.year) params.year = filters.year;
+  if (filters.genre) params.with_genres = filters.genre;
+  if (filters.rating) params['vote_average.gte'] = filters.rating;
+  if (filters.sortBy && filters.sortBy !== 'relevance') {
+    params.sort_by = filters.sortBy;
+  }
+
+  // Para búsqueda con filtros, usamos el endpoint de discover
+  // Nota: TMDB no permite búsqueda por texto en discover, así que usamos search básico
+  // y aplicamos filtros en el cliente por ahora
+  return fetchFromAPI('/search/movie', {
+    query,
+    page: validatePage(page),
+    language: config.ui.defaultLanguage,
+    include_adult: filters.includeAdult || false
   }, searchCache);
 };
 

@@ -27,7 +27,7 @@ const Navbar = () => {
       label: 'Películas', 
       icon: FiFilm,
       color: 'text-blue-400',
-      bgColor: 'bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 border-b border-gray-700/50',
+      bgColor: 'bg-blue-500/20',
       description: 'Descubre las mejores películas'
     },
     { 
