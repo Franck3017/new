@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FiSearch, FiFilter, FiX, FiClock, FiTrendingUp, FiSliders } from 'react-icons/fi';
+import { FiSearch, FiX, FiClock, FiTrendingUp, FiSliders } from 'react-icons/fi';
 import { ROUTES } from '@/utils/urlHelpers';
 
 interface SearchFilters {

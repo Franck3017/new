@@ -1,4 +1,9 @@
 {
   "/buscar/page": "app/buscar/page.js",
-  "/page": "app/page.js"
+  "/peliculas/page": "app/peliculas/page.js",
+  "/pelicula/[slug]/page": "app/pelicula/[slug]/page.js",
+  "/series/page": "app/series/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/genero/[slug]/page": "app/genero/[slug]/page.js",
+  "/persona/[id]/page": "app/persona/[id]/page.js"
 }
