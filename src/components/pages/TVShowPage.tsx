@@ -141,6 +141,7 @@ const LoadingState = memo(() => (
     </div>
   </div>
 ));
+LoadingState.displayName = 'LoadingState';
 
 const ErrorState = memo(({ error, onRetry }: { error: string; onRetry: () => void }) => (
   <div className="min-h-screen bg-gray-900 flex items-center justify-center">
@@ -166,6 +167,7 @@ const ErrorState = memo(({ error, onRetry }: { error: string; onRetry: () => voi
     </div>
   </div>
 ));
+ErrorState.displayName = 'ErrorState';
 
 const SectionCard = memo(({ 
   title, 
@@ -186,6 +188,7 @@ const SectionCard = memo(({
     {children}
   </div>
 ));
+SectionCard.displayName = 'SectionCard';
 
 const InfoBadge = memo(({ 
   icon: Icon, 
@@ -201,6 +204,7 @@ const InfoBadge = memo(({
     <span className="text-white text-sm sm:text-base">{children}</span>
   </div>
 ));
+InfoBadge.displayName = 'InfoBadge';
 
 const CastMemberLink = memo(({ member }: { member: CastMember }) => (
   <Link
@@ -231,6 +235,7 @@ const CastMemberLink = memo(({ member }: { member: CastMember }) => (
     <FiExternalLink className="h-4 w-4 text-gray-500 group-hover:text-blue-400 transition-colors duration-200" />
   </Link>
 ));
+CastMemberLink.displayName = 'CastMemberLink';
 
 const ContentGrid = memo(({ 
   items, 
@@ -258,6 +263,7 @@ const ContentGrid = memo(({
     )}
   </>
 ));
+ContentGrid.displayName = 'ContentGrid';
 
 const GenreLink = memo(({ genre }: { genre: { id: number; name: string } }) => (
   <Link
@@ -267,6 +273,7 @@ const GenreLink = memo(({ genre }: { genre: { id: number; name: string } }) => (
     {genre.name}
   </Link>
 ));
+GenreLink.displayName = 'GenreLink';
 
 const ActionButton = memo(({ 
   onClick, 
@@ -289,6 +296,7 @@ const ActionButton = memo(({
     <Icon className="h-5 w-5" />
   </button>
 ));
+ActionButton.displayName = 'ActionButton';
 
 // ============================================================================
 // MAIN SECTIONS
@@ -442,6 +450,7 @@ const HeroSection = memo(({
     </div>
   );
 });
+HeroSection.displayName = 'HeroSection';
 
 const TabNavigation = memo(({ activeTab, onTabChange }: { activeTab: TabType; onTabChange: (tab: TabType) => void }) => (
   <div className="flex items-center justify-center mb-8">
@@ -466,6 +475,7 @@ const TabNavigation = memo(({ activeTab, onTabChange }: { activeTab: TabType; on
     </div>
   </div>
 ));
+TabNavigation.displayName = 'TabNavigation';
 
 const OverviewTab = memo(({ tvShow, credits, recommendedShows }: { tvShow: TVShow; credits: any; recommendedShows: any }) => {
   const { displayText, showFullOverview, toggleOverview, shouldShowToggle } = useOverviewText(tvShow.overview);
@@ -535,6 +545,7 @@ const OverviewTab = memo(({ tvShow, credits, recommendedShows }: { tvShow: TVSho
     </div>
   );
 });
+OverviewTab.displayName = 'OverviewTab';
 
 const CastTab = memo(({ credits }: { credits: any }) => {
   const { mainCast } = useCastData(credits);
@@ -553,6 +564,7 @@ const CastTab = memo(({ credits }: { credits: any }) => {
     </div>
   );
 });
+CastTab.displayName = 'CastTab';
 
 const VideosTab = memo(({ videos }: { videos: any }) => (
   <div className="space-y-8">
@@ -563,6 +575,7 @@ const VideosTab = memo(({ videos }: { videos: any }) => (
     <VideoPlayer videos={videos?.results || []} />
   </div>
 ));
+VideosTab.displayName = 'VideosTab';
 
 const SimilarTab = memo(({ similarShows }: { similarShows: any }) => (
   <div className="space-y-8">
@@ -581,6 +594,7 @@ const SimilarTab = memo(({ similarShows }: { similarShows: any }) => (
     />
   </div>
 ));
+SimilarTab.displayName = 'SimilarTab';
 
 // ============================================================================
 // MAIN COMPONENT

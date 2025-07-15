@@ -1,17 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/buscar/page": "app/buscar/page.js",
-  "/favoritos/series/page": "app/favoritos/series/page.js",
-  "/page": "app/page.js",
-  "/genero/[slug]/page": "app/genero/[slug]/page.js",
-  "/persona/[id]/page": "app/persona/[id]/page.js",
-  "/peliculas/page": "app/peliculas/page.js",
-  "/personas/page": "app/personas/page.js",
-  "/categoria/[category]/page": "app/categoria/[category]/page.js",
-  "/favoritos/peliculas/page": "app/favoritos/peliculas/page.js",
-  "/favoritos/personas/page": "app/favoritos/personas/page.js",
-  "/series/[id]/page": "app/series/[id]/page.js",
   "/series/page": "app/series/page.js",
-  "/serie/[slug]/page": "app/serie/[slug]/page.js",
-  "/pelicula/[slug]/page": "app/pelicula/[slug]/page.js"
+  "/genero/[slug]/page": "app/genero/[slug]/page.js",
+  "/peliculas/page": "app/peliculas/page.js",
+  "/persona/[id]/page": "app/persona/[id]/page.js",
+  "/pelicula/[slug]/page": "app/pelicula/[slug]/page.js",
+  "/page": "app/page.js",
+  "/categoria/[category]/page": "app/categoria/[category]/page.js",
+  "/personas/page": "app/personas/page.js"
 }

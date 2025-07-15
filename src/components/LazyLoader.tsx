@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Suspense, lazy, useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { LOADING_CONFIG } from '@/lib/performance';
 
 interface LazyLoaderProps {
@@ -216,16 +217,16 @@ const LazyImage: React.FC<LazyImageProps> = ({
   return (
     <div ref={elementRef} className={className}>
       {imageSrc ? (
-        <img
-          src={imageSrc}
-          alt={alt}
-          width={width}
-          height={height}
-          className={`transition-opacity duration-300 ${hasError ? 'opacity-50' : 'opacity-100'}`}
-          onLoad={handleLoad}
-          onError={handleError}
-          loading="lazy"
-        />
+        <div className="relative">
+          <Image
+            src={imageSrc}
+            alt={alt}
+            width={width || 300}
+            height={height || 450}
+            className={`transition-opacity duration-300 ${hasError ? 'opacity-50' : 'opacity-100'}`}
+            loading="lazy"
+          />
+        </div>
       ) : (
         <SkeletonLoader />
       )}
