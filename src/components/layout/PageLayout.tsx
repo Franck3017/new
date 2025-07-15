@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Navbar from '@/components/Navbar';
-import { NotificationContainer } from '@/components/Notification';
+import Navbar from '@/components/layout/Navbar';
+import { NotificationContainer } from '@/components/common/Notification';
 
 interface PageLayoutProps {
   children: ReactNode;

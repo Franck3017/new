@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Movie } from '@/types';
-import MovieCard from '@/components/MovieCard';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import MovieCard from '@/components/features/movies/MovieCard';
+import { HorizontalScroll } from '@/components/ui';
 import { FiTrendingUp, FiStar, FiPlay, FiCalendar, FiTv } from 'react-icons/fi';
 import { generateCategoryUrl } from '@/utils/urlHelpers';
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import MovieCard from '@/components/MovieCard';
-import { useNotifications } from '@/components/Notification';
+import MovieCard from '@/components/features/movies/MovieCard';
+import { useNotifications } from '@/components/common/Notification';
 import { useFavorites } from '@/context/FavoritesContext';
 import { ContainerLayout } from '@/components/layout/PageLayout';
 import { 

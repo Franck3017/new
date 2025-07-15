@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import { use } from 'react';
 import { useTVShow, TVShow } from "@/hooks/useTVShow";
-import { useNotifications } from "@/components/Notification";
+import { useNotifications } from "@/components/common/Notification";
 import { useFavorites } from "@/context/FavoritesContext";
 import { Movie } from "@/types";
 

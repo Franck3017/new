@@ -7,9 +7,8 @@ import {
   SectionIcons 
 } from './HomePageSections';
 import HeroSection from '@/components/HeroSection';
-import Footer from '@/components/Footer';
-import APITest from '@/components/APITest';
-import { useNotifications, NotificationContainer } from '@/components/Notification';
+import Footer from '@/components/layout/Footer';
+import { useNotifications, NotificationContainer } from '@/components/common/Notification';
 
 export default function HomePage() {
   const {
@@ -143,10 +142,6 @@ export default function HomePage() {
           activeSection={activeSection}
         />
 
-        {/* API Test Component - Temporal para debugging */}
-        <div className="mt-16">
-          <APITest />
-        </div>
       </main>
 
       {/* Contenedor de notificaciones */}

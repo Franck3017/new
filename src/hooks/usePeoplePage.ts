@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getPopularPeople, searchPeople } from "@/lib/api";
 import { Person } from "@/types";
-import { useNotifications } from "@/components/Notification";
+import { useNotifications } from "@/components/common/Notification";
 
 export interface PeoplePageState {
   people: Person[];

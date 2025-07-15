@@ -2,21 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Movie } from '@/types';
-import MovieCard from '@/components/MovieCard';
-import MovieCardSkeleton from '@/components/MovieCardSkeleton';
-import { useNotifications } from '@/components/Notification';
+import MovieCard from '@/components/features/movies/MovieCard';
+import { useNotifications } from '@/components/common/Notification';
 import { useFavorites } from '@/context/FavoritesContext';
 import { ContainerLayout } from '@/components/layout/PageLayout';
 import { 
-  FiHeart, 
   FiTrash2, 
   FiFilter, 
   FiGrid, 
   FiList,
   FiSearch,
-  FiStar,
-  FiCalendar,
   FiTrendingUp,
   FiTv
 } from 'react-icons/fi';
@@ -31,7 +26,7 @@ export default function TVFavoritesPage() {
   const [filterGenre, setFilterGenre] = useState<string>('');
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  const { notifications, showSuccess, showError } = useNotifications();
+  const { showSuccess, showError } = useNotifications();
   const { favoriteTV, removeTVFromFavorites, clearTVFavorites } = useFavorites();
 
   // Mostrar toast de bienvenida solo en la primera carga

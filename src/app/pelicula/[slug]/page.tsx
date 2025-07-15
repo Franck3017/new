@@ -28,17 +28,17 @@ import {
 } from "react-icons/fi";
 import { FaBuilding } from "react-icons/fa";
 import CastMemberCard from "@/components/CastMemberCard";
-import VideoPlayer from "@/components/VideoPlayer";
-import MovieCard from "@/components/MovieCard";
-import { useNotifications, NotificationContainer } from "@/components/Notification";
+import { VideoPlayer } from "@/components/ui";
+import MovieCard from "@/components/features/movies/MovieCard";
+import { useNotifications, NotificationContainer } from "@/components/common/Notification";
 import { useFavorites } from "@/context/FavoritesContext";
 import Link from "next/link";
-import { 
+import {
   extractIdFromUrl,
   generatePersonUrl,
   generateMovieUrl,
   generateGenreUrl,
-  ROUTES 
+  ROUTES
 } from '@/utils/urlHelpers';
 
 
@@ -50,7 +50,7 @@ interface MoviePageProps {
 export default function MoviePage({ params }: MoviePageProps) {
   // Desenvolver params usando React.use()
   const resolvedParams = use(params) as { slug: string };
-  
+
   const [movie, setMovie] = useState<Movie | null>(null);
   const [credits, setCredits] = useState<any>(null);
   const [videos, setVideos] = useState<any>(null);
@@ -77,11 +77,11 @@ export default function MoviePage({ params }: MoviePageProps) {
   const isValidId = movieId !== null && movieId > 0;
 
   // Variables derivadas
-  const backgroundImageUrl = movie?.backdrop_path 
+  const backgroundImageUrl = movie?.backdrop_path
     ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
     : '/api/placeholder/1920/1080';
 
-  const director = credits?.crew?.find((member: CrewMember) => 
+  const director = credits?.crew?.find((member: CrewMember) =>
     member.job === 'Director'
   );
 
@@ -94,7 +94,7 @@ export default function MoviePage({ params }: MoviePageProps) {
       try {
         setLoading(true);
         setError(null);
-        
+
         if (!isValidId) {
           throw new Error('ID de película inválido');
         }
@@ -112,7 +112,7 @@ export default function MoviePage({ params }: MoviePageProps) {
         setVideos(videosData);
         setSimilarMovies(similarData);
         setRecommendedMovies(recommendedData);
-        
+
         if (!isInitialLoad) {
           showSuccess('Película cargada', `${movieData.title} se cargó correctamente`);
         }
@@ -267,8 +267,8 @@ export default function MoviePage({ params }: MoviePageProps) {
             <button
               onClick={handleFavoriteClick}
               className={`p-3 rounded-full backdrop-blur-sm transition-all duration-200 cursor-pointer ${isMovieFavorite(movie.id)
-                  ? 'bg-red-500/80 text-white'
-                  : 'bg-black/50 text-white hover:bg-black/70'
+                ? 'bg-red-500/80 text-white'
+                : 'bg-black/50 text-white hover:bg-black/70'
                 }`}
               aria-label={isMovieFavorite(movie.id) ? "Quitar de favoritos" : "Agregar a favoritos"}
             >
@@ -390,7 +390,7 @@ export default function MoviePage({ params }: MoviePageProps) {
         </div>
 
         {/* Contenido principal */}
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 md:px-0 py-12">
           {/* Tabs de navegación */}
           <div className="flex items-center justify-center mb-8">
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-1 flex">
@@ -406,8 +406,8 @@ export default function MoviePage({ params }: MoviePageProps) {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
                     className={`flex items-center text-xs md:text-base gap-2 px-3 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200 ${activeTab === tab.id
-                        ? 'bg-blue-500 text-white shadow-lg'
-                        : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
+                      ? 'bg-blue-500 text-white shadow-lg'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
                       }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -430,22 +430,22 @@ export default function MoviePage({ params }: MoviePageProps) {
                       Sinopsis
                     </h2>
                     <p className="text-gray-300 leading-relaxed">
-                        {showFullOverview
-                          ? movie.overview
-                          : movie.overview.length > 200
-                            ? `${movie.overview.substring(0, 200)}...`
-                            : movie.overview
+                      {showFullOverview
+                        ? movie.overview
+                        : movie.overview.length > 200
+                          ? `${movie.overview.substring(0, 200)}...`
+                          : movie.overview
                           || 'Sinopsis no disponible.'
-                        }
-                      </p>
-                      {movie.overview.length > 200 && (
-                        <button
-                          onClick={() => setShowFullOverview(!showFullOverview)}
-                          className="text-blue-400 hover:text-blue-300 mt-2 text-sm font-medium"
-                        >
-                          {showFullOverview ? 'Mostrar menos' : 'Leer más'}
-                        </button>
-                      )}
+                      }
+                    </p>
+                    {movie.overview.length > 200 && (
+                      <button
+                        onClick={() => setShowFullOverview(!showFullOverview)}
+                        className="text-blue-400 hover:text-blue-300 mt-2 text-sm font-medium"
+                      >
+                        {showFullOverview ? 'Mostrar menos' : 'Leer más'}
+                      </button>
+                    )}
                   </div>
 
                   {/* Información técnica */}
@@ -475,10 +475,11 @@ export default function MoviePage({ params }: MoviePageProps) {
                               <span className="text-gray-400 text-xs">{movie.status === 'Released' ? "Finalizado" : movie.status}</span>
                             </div>
                           )
-                        } 
+                        }
                       </div>
                     </div>
                   </div>
+                  
 
                   {/* Películas Recomendadas */}
                   <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
@@ -489,46 +490,47 @@ export default function MoviePage({ params }: MoviePageProps) {
                     {recommendedMovies?.results && recommendedMovies.results.length > 0 ? (
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                         {recommendedMovies.results.slice(0, 8).map((similarMovie: Movie) => (
-                          <Link
-                            key={similarMovie.id}
-                            href={generateMovieUrl(similarMovie.id, similarMovie.title || '')}
-                            className="group bg-gray-700/50 rounded-lg overflow-hidden hover:bg-gray-600/50 transition-all duration-300"
-                          >
-                            <div className="relative aspect-[2/3] bg-gray-600">
-                              {similarMovie.poster_path ? (
-                                <Image
-                                  src={`https://image.tmdb.org/t/p/w200${similarMovie.poster_path}`}
-                                  alt={`Poster de ${similarMovie.title}`}
-                                  fill
-                                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center">
-                                  <FiPlay className="h-8 w-8 text-gray-500" />
-                                </div>
-                              )}
-                              {/* Overlay de hover */}
-                              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <div className="text-center">
-                                  <FiPlay className="h-6 w-6 text-white mx-auto mb-1" />
-                                  <p className="text-white text-xs font-medium">Ver detalles</p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="p-3">
-                              <h3 className="font-semibold text-white text-sm line-clamp-2 mb-1 group-hover:text-blue-400 transition-colors duration-200">
-                                {similarMovie.title}
-                              </h3>
-                              <div className="flex items-center justify-between text-xs text-gray-400">
-                                <span>{similarMovie.release_date?.substring(0, 4) || 'N/A'}</span>
-                                <div className="flex items-center gap-1">
-                                  <FiStar className="h-3 w-3 text-yellow-400" />
-                                  <span>{similarMovie.vote_average?.toFixed(1) || 'N/A'}</span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
+                          // <Link
+                          //   key={similarMovie.id}
+                          //   href={generateMovieUrl(similarMovie.id, similarMovie.title || '')}
+                          //   className="group bg-gray-700/50 rounded-lg overflow-hidden hover:bg-gray-600/50 transition-all duration-300"
+                          // >
+                          //   <div className="relative aspect-[2/3] bg-gray-600 group-hover:scale-105 transition-transform duration-300">
+                          //     {similarMovie.poster_path ? (
+                          //       <Image
+                          //         src={`https://image.tmdb.org/t/p/w200${similarMovie.poster_path}`}
+                          //         alt={`Poster de ${similarMovie.title}`}
+                          //         fill
+                          //         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                          //         className="object-cover"
+                          //       />
+                          //     ) : (
+                          //       <div className="w-full h-full flex items-center justify-center">
+                          //         <FiPlay className="h-8 w-8 text-gray-500" />
+                          //       </div>
+                          //     )}
+                          //     {/* Overlay de hover */}
+                          //     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          //       <div className="text-center">
+                          //         <FiPlay className="h-6 w-6 text-white mx-auto mb-1" />
+                          //         <p className="text-white text-xs font-medium">Ver detalles</p>
+                          //       </div>
+                          //     </div>
+                          //   </div>
+                          //   <div className="p-3">
+                          //     <h3 className="font-semibold text-white text-sm line-clamp-2 mb-1 group-hover:text-blue-400 transition-colors duration-200">
+                          //       {similarMovie.title}
+                          //     </h3>
+                          //     <div className="flex items-center justify-between text-xs text-gray-400">
+                          //       <span>{similarMovie.release_date?.substring(0, 4) || 'N/A'}</span>
+                          //       <div className="flex items-center gap-1">
+                          //         <FiStar className="h-3 w-3 text-yellow-400" />
+                          //         <span>{similarMovie.vote_average?.toFixed(1) || 'N/A'}</span>
+                          //       </div>
+                          //     </div>
+                          //   </div>
+                          // </Link>
+                          <MovieCard key={similarMovie.id} movie={similarMovie} mediaType="movie" />
                         ))}
                       </div>
                     ) : (
@@ -589,13 +591,13 @@ export default function MoviePage({ params }: MoviePageProps) {
                         <div key={company.id} className="flex items-center gap-2 w-10 h-10">
                           {company.logo_path ? (
                             <>
-                              <Image 
-                                src={`https://image.tmdb.org/t/p/w92${company.logo_path}`} 
-                                alt={company.name} 
-                                width={92} 
-                                height={92} 
-                                className="w-full h-full object-cover" 
-                                title={company.name} 
+                              <Image
+                                src={`https://image.tmdb.org/t/p/w92${company.logo_path}`}
+                                alt={company.name}
+                                width={92}
+                                height={92}
+                                className="w-full h-full object-cover"
+                                title={company.name}
                               />
                             </>
                           ) : (

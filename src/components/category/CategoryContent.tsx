@@ -1,7 +1,7 @@
 import { Movie } from '@/types';
-import MovieCard from '@/components/MovieCard';
-import MovieCardSkeleton from '@/components/MovieCardSkeleton';
-import InfiniteScroll from '@/components/InfiniteScroll';
+import MovieCard from '@/components/features/movies/MovieCard';
+import MovieCardSkeleton from '@/components/features/movies/MovieCardSkeleton';
+import InfiniteScroll from '@/components/common/InfiniteScroll';
 import { FiSearch } from 'react-icons/fi';
 
 interface CategoryContentProps {

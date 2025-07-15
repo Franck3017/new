@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 import SmoothPageTransition from "@/components/SmoothPageTransition";
-import { ClerkProvider } from '@clerk/nextjs'
-const inter = Inter({ subsets: ["latin"] });
+
+const onest = Onest({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 
 export const metadata: Metadata = {
   title: "CineGemini",
@@ -20,19 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="es">
-        <body className={inter.className}>
-          <ErrorBoundary>
-            <ThemeProvider>
-              <FavoritesProvider>
-                <Navbar />
-                <SmoothPageTransition>{children}</SmoothPageTransition>
-              </FavoritesProvider>
-            </ThemeProvider>
-          </ErrorBoundary>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="es">
+      <body className={onest.className}>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <FavoritesProvider>
+              <Navbar />
+              <SmoothPageTransition>{children}</SmoothPageTransition>
+            </FavoritesProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
+      </body>
+    </html>
   );
 }

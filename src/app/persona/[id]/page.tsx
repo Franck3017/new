@@ -8,7 +8,6 @@ import {
 } from "@/lib/api";
 import Image from "next/image";
 import {
-  FiClock,
   FiStar,
   FiPlay,
   FiHeart,
@@ -19,7 +18,6 @@ import {
   FiArrowLeft,
   FiExternalLink,
   FiDownload,
-  FiBookmark,
   FiInfo,
   FiFilm,
   FiImage,
@@ -36,7 +34,7 @@ import {
   FiTwitter
 } from "react-icons/fi";
 import CreditCard from "@/components/CreditCard";
-import { useNotifications, NotificationContainer } from "@/components/Notification";
+import { useNotifications, NotificationContainer } from "@/components/common/Notification";
 import { useFavorites } from "@/context/FavoritesContext";
 import Link from "next/link";
 import { ROUTES } from '@/utils/urlHelpers';

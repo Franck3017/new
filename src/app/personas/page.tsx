@@ -1,8 +1,8 @@
 'use client';
 
 import { FiUser } from "react-icons/fi";
-import { useNotifications, NotificationContainer } from "@/components/Notification";
-import PersonCard from "@/components/PersonCard";
+import { useNotifications, NotificationContainer } from "@/components/common/Notification";
+import PersonCard from "@/components/features/people/PersonCard";
 import { usePeoplePage } from "@/hooks/usePeoplePage";
 import { PeoplePageHeader } from "@/components/pages/PeoplePageHeader";
 import { PeoplePageFilters } from "@/components/pages/PeoplePageFilters";
@@ -21,7 +21,7 @@ export default function PeoplePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-900">
+      <div className="min-h-screen">
         {/* Header Premium con Funcionalidades */}
         <PeoplePageHeader state={state} actions={actions} />
 

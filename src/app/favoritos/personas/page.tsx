@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { FiHeart, FiSearch, FiFilter, FiGrid, FiList, FiTrash2, FiUser } from 'react-icons/fi';
-import { useNotifications } from '@/components/Notification';
+import { useNotifications } from '@/components/common/Notification';
 import { useFavorites } from '@/context/FavoritesContext';
-import PersonCard from '@/components/PersonCard';
+import PersonCard from '@/components/features/people/PersonCard';
 import { ContainerLayout } from '@/components/layout/PageLayout';
 import Image from 'next/image';
 import Link from 'next/link';

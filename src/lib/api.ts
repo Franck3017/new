@@ -1,4 +1,4 @@
-import { MoviesResponse, Movie, CreditsResponse, VideosResponse } from "@/types";
+import { MoviesResponse, Movie, CreditsResponse, VideosResponse } from "@/types"; 
 import { config, getApiKey, getImageUrl } from "./config";
 import { movieCache, genreCache, personCache, searchCache } from "./cache";
 

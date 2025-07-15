@@ -2,9 +2,9 @@
 
 import { useMoviesPage } from '@/hooks/useMoviesPage';
 import { MOVIE_GENRES } from '@/constants/genres';
-import MovieCard from '@/components/MovieCard';
-import MovieCardSkeleton from '@/components/MovieCardSkeleton';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import MovieCard from '@/components/features/movies/MovieCard';
+import MovieCardSkeleton from '@/components/features/movies/MovieCardSkeleton';
+import { HorizontalScroll } from '@/components/ui';
 import { 
   FiFilm, 
   FiTrendingUp, 
@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import { generateGenreUrl, ROUTES } from '@/utils/urlHelpers';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // ============================================================================
 // COMPONENTES AUXILIARES
@@ -267,6 +268,8 @@ const NoResultsSection = ({
 // ============================================================================
 
 export default function MoviesPageComponent() {
+  const pathname = usePathname();
+  
   const {
     // Data
     genreData,
@@ -307,7 +310,7 @@ export default function MoviesPageComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
       {/* Header Premium con Funcionalidades */}
       <div className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 border-b border-gray-700/50">
         <div className="container mx-auto px-4 py-6 sm:py-8">
@@ -325,7 +328,9 @@ export default function MoviesPageComponent() {
               <div className="hidden sm:flex items-center gap-2 text-gray-400">
                 <FiChevronRight className="h-4 w-4" />
                 <span className="text-white font-medium text-sm capitalize">
-                  movies
+                  {
+                    pathname.split('/').pop()
+                  }
                 </span>
               </div>
             </div>
@@ -397,7 +402,7 @@ export default function MoviesPageComponent() {
               <div className="flex flex-wrap items-center gap-2">
                 <button 
                   onClick={() => handleQuickFilter('live')}
-                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 ${
+                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 cursor-pointer ${
                     quickFilters.includes('live') 
                       ? 'bg-emerald-500/30 text-emerald-300 border-emerald-500/50' 
                       : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/30'
@@ -408,7 +413,7 @@ export default function MoviesPageComponent() {
                 </button>
                 <button 
                   onClick={() => handleQuickFilter('rated')}
-                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 ${
+                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 cursor-pointer ${
                     quickFilters.includes('rated') 
                       ? 'bg-blue-500/30 text-blue-300 border-blue-500/50' 
                       : 'bg-blue-500/20 text-blue-400 border-blue-500/30 hover:bg-blue-500/30'
@@ -419,7 +424,7 @@ export default function MoviesPageComponent() {
                 </button>
                 <button 
                   onClick={() => handleQuickFilter('trending')}
-                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 ${
+                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 cursor-pointer ${
                     quickFilters.includes('trending') 
                       ? 'bg-purple-500/30 text-purple-300 border-purple-500/50' 
                       : 'bg-purple-500/20 text-purple-400 border-purple-500/30 hover:bg-purple-500/30'
@@ -430,7 +435,7 @@ export default function MoviesPageComponent() {
                 </button>
                 <button 
                   onClick={() => handleQuickFilter('new')}
-                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 ${
+                  className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border transition-all duration-300 cursor-pointer ${
                     quickFilters.includes('new') 
                       ? 'bg-orange-500/30 text-orange-300 border-orange-500/50' 
                       : 'bg-orange-500/20 text-orange-400 border-orange-500/30 hover:bg-orange-500/30'
@@ -443,7 +448,7 @@ export default function MoviesPageComponent() {
               
               <button 
                 onClick={toggleFilterExpanded}
-                className="px-3 py-1 bg-gray-600/20 text-gray-400 text-xs rounded border border-gray-600/30 hover:bg-gray-600/30 transition-colors duration-300 self-start sm:self-auto"
+                className="px-3 py-1 bg-gray-600/20 text-gray-400 text-xs rounded border border-gray-600/30 hover:bg-gray-600/30 transition-colors duration-300 self-start sm:self-auto cursor-pointer"
               >
                 {isFilterExpanded ? 'Ocultar' : 'Más filtros'}
               </button>

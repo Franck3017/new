@@ -2,7 +2,7 @@
 import { useState, useCallback, useMemo, use } from 'react';
 import { notFound } from 'next/navigation';
 import { useTVShow } from '@/hooks/useTVShow';
-import { useNotifications } from '@/components/Notification';
+import { useNotifications } from '@/components/common/Notification';
 import { useFavorites } from '@/context/FavoritesContext';
 import { Movie } from '@/types';
 import TVShowPage from '@/components/pages/TVShowPage';

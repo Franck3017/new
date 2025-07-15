@@ -8,7 +8,7 @@ import { parseCategorySlug } from '@/utils/urlHelpers';
 import { CategoryHeader } from '@/components/category/CategoryHeader';
 import { CategoryControls } from '@/components/category/CategoryControls';
 import { CategoryContent } from '@/components/category/CategoryContent';
-import { NotificationContainer } from '@/components/Notification';
+import { NotificationContainer } from '@/components/common/Notification';
 
 export default function CategoryPage() {
   const params = useParams();

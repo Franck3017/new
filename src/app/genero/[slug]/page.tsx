@@ -3,11 +3,8 @@
 import { useState, useEffect, use, useMemo } from 'react';
 import { getMoviesByGenre, getTVShowsByGenre } from "@/lib/api";
 import { Movie } from "@/types";
-import Image from "next/image";
 import {
   FiArrowLeft,
-  FiStar,
-  FiCalendar,
   FiFilter,
   FiGrid,
   FiList,
@@ -17,10 +14,10 @@ import {
   FiArrowDown,
   FiArrowUp,
 } from "react-icons/fi";
-import MovieCard from "@/components/MovieCard";
-import { useNotifications, NotificationContainer } from "@/components/Notification";
+import MovieCard from "@/components/features/movies/MovieCard";
+import { useNotifications, NotificationContainer } from "@/components/common/Notification";
 import Link from "next/link";
-import InfiniteScroll from "@/components/InfiniteScroll";
+import InfiniteScroll from "@/components/common/InfiniteScroll";
 import { ROUTES } from '@/utils/urlHelpers';
 import { MOVIE_GENRES, TV_GENRES } from '@/constants/genres';
 
@@ -45,7 +42,6 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [searchQuery, setSearchQuery] = useState('');
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const [isSearching, setIsSearching] = useState(false);
 
   // Estado para las notificaciones
   const { notifications, showSuccess, showError } = useNotifications();
@@ -183,20 +179,20 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
 
   // Obtener el contenido correcto según el tipo de medio
   const currentContent = mediaType === 'tv' ? tvShows : movies;
-  
+
   // Memoizar el contenido filtrado para evitar re-cálculos innecesarios
   const filteredContent = useMemo(() => {
     return currentContent
       .filter(item => {
         const title = mediaType === 'tv' ? item.name : item.title;
-        
+
         return (
           searchQuery === '' || (title && title.toLowerCase().includes(searchQuery.toLowerCase()))
         );
       })
       .sort((a, b) => {
         let comparison = 0;
-        
+
         switch (sortBy) {
           case 'popularity':
             comparison = (a.popularity || 0) - (b.popularity || 0);
@@ -210,7 +206,7 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
             comparison = new Date(dateA || '').getTime() - new Date(dateB || '').getTime();
             break;
         }
-        
+
         return sortOrder === 'asc' ? comparison : -comparison;
       });
   }, [currentContent, searchQuery, sortBy, sortOrder, mediaType]);
@@ -361,7 +357,7 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
             <>
               {filteredContent.length} de {currentContent.length} {mediaType === 'tv' ? 'series' : 'películas'} encontradas
               {filteredContent.length === 0 && (
-                <span className="text-yellow-400 ml-2">• No se encontraron resultados para "{searchQuery}"</span>
+                <span className="text-yellow-400 ml-2">• No se encontraron resultados para &quot;{searchQuery}&quot;</span>
               )}
             </>
           ) : (
@@ -371,7 +367,7 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
             </>
           )}
         </div>
-        
+
         {/* Contenido */}
         {error ? (
           <div className="text-center py-12 animate-fade-in">
@@ -386,9 +382,9 @@ export default function GenrePage({ params, searchParams }: GenrePageProps) {
         ) : (
           <>
             {/* Grid de contenido */}
-            <InfiniteScroll 
-              onLoadMore={loadMore} 
-              hasMore={hasMore && !searchQuery} 
+            <InfiniteScroll
+              onLoadMore={loadMore}
+              hasMore={hasMore && !searchQuery}
               loading={loading}
               loadingText={`Cargando más ${mediaType === 'tv' ? 'series' : 'películas'}...`}
               endText={`Has visto todas las ${mediaType === 'tv' ? 'series' : 'películas'} disponibles`}

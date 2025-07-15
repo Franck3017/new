@@ -2,9 +2,9 @@
 
 import { ReactNode } from 'react';
 import { Movie } from '@/types';
-import MovieCard from '@/components/MovieCard';
-import MovieCardSkeleton from '@/components/MovieCardSkeleton';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import MovieCard from '@/components/features/movies/MovieCard';
+import MovieCardSkeleton from '@/components/features/movies/MovieCardSkeleton';
+import { HorizontalScroll } from '@/components/ui';
 import { FiFilter } from 'react-icons/fi';
 
 interface MovieSectionProps {

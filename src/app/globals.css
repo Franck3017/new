@@ -6,26 +6,6 @@
   }
 }
 
-@layer base {
-  :root {
-    --color-text-base: #ffffff;
-    --color-bg-base: #0a0a0a;
-  }
-
-  [data-theme="light"] {
-    --color-text-base: #0a0a0a;
-    --color-bg-base: #ffffff;
-  }
-
-  body {
-    color: var(--color-text-base);
-    background-color: var(--color-bg-base);
-  }
-}
-
-/* Puedes añadir tus estilos globales personalizados aquí */
-
-/* Animaciones personalizadas */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -647,14 +627,6 @@ img {
     content: '...';
   }
 }
-
-/* Estilos para modo oscuro */
-@media (prefers-color-scheme: dark) {
-  .dark-mode-auto {
-    @apply bg-gray-900 text-white;
-  }
-}
-
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   .mobile-optimized {

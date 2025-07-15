@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Movie } from '@/types';
-import { useNotifications } from '@/components/Notification';
+import { useNotifications } from '@/components/common/Notification';
 import { useDebounce } from './useDebounce';
 
 // ============================================================================

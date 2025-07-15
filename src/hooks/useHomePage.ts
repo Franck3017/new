@@ -10,7 +10,7 @@ import {
   getAiringTodayTVShows
 } from "@/lib/api";
 import { Movie } from "@/types";
-import { useNotifications } from "@/components/Notification";
+import { useNotifications } from "@/components/common/Notification";
 
 // ============================================================================
 // TYPES & INTERFACES

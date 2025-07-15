@@ -11,9 +11,9 @@ import {
   getAiringTodayTVShows 
 } from '@/lib/api';
 import { Movie } from '@/types';
-import MovieCard from '@/components/MovieCard';
-import MovieCardSkeleton from '@/components/MovieCardSkeleton';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import MovieCard from '@/components/features/movies/MovieCard';
+import MovieCardSkeleton from '@/components/features/movies/MovieCardSkeleton';
+import { HorizontalScroll } from '@/components/ui';
 // Notificaciones eliminadas
 import { 
   FiTv, 

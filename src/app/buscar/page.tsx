@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
-import SearchBar from "@/components/SearchBar";
-import MovieCard from "@/components/MovieCard";
-import MovieCardSkeleton from "@/components/MovieCardSkeleton";
-import InfiniteScroll from "@/components/InfiniteScroll";
+import { SearchBar } from "@/components/features/search";
+import { MovieCard, MovieCardSkeleton } from "@/components/features/movies";
+import { InfiniteScroll } from "@/components/common";
 import { searchMovies, searchMoviesAdvanced } from "@/lib/api";
 import { Movie } from "@/types";
-import { useNotifications, NotificationContainer } from "@/components/Notification";
+import { useNotifications, NotificationContainer } from "@/components/common";
 import { FiSearch, FiTrendingUp, FiFilter, FiX } from 'react-icons/fi';
 
 interface SearchPageProps {

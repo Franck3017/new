@@ -6,7 +6,7 @@ import {
   getSimilarTVShows,
   getRecommendedTVShows,
 } from "@/lib/api";
-import { useNotifications } from "@/components/Notification";
+import { useNotifications } from "@/components/common/Notification";
 
 // ============================================================================
 // TYPES & INTERFACES

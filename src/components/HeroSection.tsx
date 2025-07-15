@@ -8,9 +8,9 @@ import {
 import { getPopularMovies, getTopRatedMovies, getNowPlayingMovies, searchMovies } from '@/lib/api';
 import { Movie } from '@/types';
 import { useFavorites } from '@/context/FavoritesContext';
-import { useNotifications } from '@/components/Notification';
-import Link from 'next/link';
+import { useNotifications } from '@/components/common/Notification';
 import { generateMovieUrl } from '@/utils/urlHelpers';
+import Link from 'next/link';
 
 interface HeroSectionProps {
   onMovieSelect?: (movie: Movie) => void;
